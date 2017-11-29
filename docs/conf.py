@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # mypolr documentation build configuration file, created by
-# sphinx-quickstart on Wed Nov 29 01:45:53 2017.
+# sphinx-quickstart on Wed Nov 29 05:11:38 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -19,8 +19,9 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('docs'))
+# sys.path.insert(0, os.path.abspath('../.'))
+sys.path.insert(0, os.path.abspath('..'))
+
 
 # -- General configuration ------------------------------------------------
 
@@ -32,10 +33,7 @@ sys.path.insert(0, os.path.abspath('docs'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.viewcode']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -47,7 +45,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'docs/index'
+master_doc = 'index'
 
 # General information about the project.
 project = 'mypolr'
@@ -79,7 +77,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
+todo_include_todos = False
 
 
 # -- Options for HTML output ----------------------------------------------

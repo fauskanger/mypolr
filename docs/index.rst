@@ -11,7 +11,7 @@ Welcome to mypolr's documentation!
    :maxdepth: 3
    :caption: Contents:
 
-   Overview <../README>
+   Overview <overview>
    ClassSpecifications
 
 
@@ -24,5 +24,3 @@ Indices and tables
 * :ref:`search`
 
 .. include:: ../README.rst
-
-
