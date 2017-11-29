@@ -4,16 +4,14 @@ DEFAULT_API_KEY = '0652a12da6eed57acba65898252fef'
 
 
 class UrlShorter:
-    def __init__(self, api_server='https://7z.fi', api_key=DEFAULT_API_KEY, api_root='/api/v2/', ):
-        """
+    """
+    Url shorter instance that stores server and API key
 
-        :param api_server:
-        :type api_server: str
-        :param api_root:
-        :type api_root: str
-        :param api_key:
-        :type api_key: str
-        """
+    :param str api_server:
+    :param atr api_root:
+    :param str api_key:
+    """
+    def __init__(self, api_server='https://7z.fi', api_key=DEFAULT_API_KEY, api_root='/api/v2/', ):
         self.api_root = api_server + api_root
         self.api_shorten_endpoint = self.api_root + 'action/shorten'
         self.api_lookup_endpoint = self.api_root + 'action/lookup'
@@ -26,14 +24,12 @@ class UrlShorter:
 
     def get_shorturl(self, long_url, custom=None, is_secret=False):
         """
+        Creates a short url if valid, else returns None
 
-        :param long_url:
-        :type long_url: str
-        :param custom:
-        :type custom: str
-        :param is_secret:
-        :type is_secret: bool
-        :return:
+        :param str long_url:
+        :param str custom:
+        :param bool is_secret:
+        :return: a short link
         :rtype: str
         """
         params = {
