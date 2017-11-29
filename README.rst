@@ -3,7 +3,8 @@ Overview
 ********
 
 ``mypolr`` is a simple python package for creating short links using the
-`Polr Project <https://polrproject.org>`_'s REST API.
+`Polr Project <https://polrproject.org>`_'s REST
+`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_.
 
 Documentation:
     https://mypolr.readthedocs.io
@@ -47,8 +48,7 @@ Polr Project
 ------------
 To use `mypolr`, you need a valid API key to a server with the Polr Project installed.
 
-You can obtain the API key by logging in and navigate to `<polr project root>/admin#developer`
-
+You can obtain the API key by logging in and navigate to `<polr project root>/admin#developer`.
 
 
 Usage
