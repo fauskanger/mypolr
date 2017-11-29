@@ -39,7 +39,7 @@ When installing with `pip` or `conda` this will be installed automatically (if n
 
 There is only one requirement:
 
- - the awesome HTTP library `requests` (`Documentation <http://python-requests.org>`_).
+- the awesome HTTP library `requests` (`Documentation <http://python-requests.org>`_).
 
 Polr Project
 ............
@@ -51,7 +51,8 @@ You can obtain the API key by logging in and navigate to `<polr project root>/ad
 
 Usage
 =====
-::
+
+.. code-block:: python
 
     from mypolr import UrlShorter
 
@@ -70,13 +71,17 @@ Usage
     custom_url = url_shorter.get_shorturl(long_url, custom='myurl')
     secret_url = url_shorter.get_shorturl(long_url, is_secret=True)
 
-Epilogue
-========
-This project has served two purposes:
-
-#. To easily use the Polr Project API in Python.
-#. Be an exercise in packaging and distributing Python modules (with `pip` and `conda`)
 
 License
 =======
 This project is licensed under the `MIT Licence <https://github.com/fauskanger/mypolr/blob/master/LICENSE>`_. (See link for details.)
+
+
+Epilogue
+========
+This project has served several purposes:
+
+#. To easily utilize the Polr Project API with Python.
+#. Be an exercise in packaging and distributing Python modules (with `pip` and `conda`).
+#. Be an exercise in reStructuredText and Sphinx documentation.
+
