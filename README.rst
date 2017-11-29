@@ -5,6 +5,9 @@ Overview
 ``mypolr`` is a simple python package for creating short links using the
 `Polr Project <https://polrproject.org>`_'s REST API.
 
+Documentation:
+    https://mypolr.readthedocs.io
+
 GitHub:
     https://github.com/fauskanger/mypolr
 
