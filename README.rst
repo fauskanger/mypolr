@@ -22,7 +22,7 @@ Installation
 Coming soon
 ------------
 
-**NOTE**: The `mypolr` package is *not* uploaded to neither `pip` nor `conda` yet.
+**NOTE**: The `mypolr` package is *not yet* uploaded to `pip` or `conda`.
 
 With `pip`:
     ``pip install mypolr``
