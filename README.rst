@@ -14,7 +14,7 @@ GitHub:
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
-.. note:: Disclaimer: This package, `mypolr`, is not affiliated with the Polr Project.
+.. note:: **Disclaimer:** This package, `mypolr`, is not affiliated with the Polr Project.
 
 Installation
 ============
