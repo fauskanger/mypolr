@@ -31,7 +31,7 @@ With `conda`:
 
 Requirements
 ============
-Tested on Python 3.6, but should work with versions from 3.3 and newer.
+Tested on Python 3.6, but should work with versiona 3.3 and newer.
 
 Python
 ......
