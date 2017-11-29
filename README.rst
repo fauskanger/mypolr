@@ -11,9 +11,7 @@ GitHub:
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
-Disclaimer
-==========
-.. note:: This package, `mypolr`, is not affiliated with the Polr Project.
+.. note:: Disclaimer: This package, `mypolr`, is not affiliated with the Polr Project.
 
 Installation
 ============
@@ -85,5 +83,5 @@ This project has served several purposes:
 
 #. To easily utilize the Polr Project API with Python.
 #. Be an exercise in packaging and distributing Python modules (with `pip` and `conda`).
-#. Be an exercise in reStructuredText and Sphinx documentation.
+#. Be an exercise in reStructuredText, Sphinx documentation, and ReadTheDocs.
 

@@ -1,17 +1,15 @@
 import requests
 
-DEFAULT_API_KEY = '0652a12da6eed57acba65898252fef'
-
 
 class UrlShorter:
     """
     Url shorter instance that stores server and API key
 
-    :param str api_server:
-    :param atr api_root:
-    :param str api_key:
+    :param str api_server: The url to your server with Polr Project installed.
+    :param str api_key: The API key associated with an user on server.
+    :param atr api_root: API root endpoint.
     """
-    def __init__(self, api_server='https://7z.fi', api_key=DEFAULT_API_KEY, api_root='/api/v2/', ):
+    def __init__(self, api_server, api_key, api_root='/api/v2/', ):
         self.api_root = api_server + api_root
         self.api_shorten_endpoint = self.api_root + 'action/shorten'
         self.api_lookup_endpoint = self.api_root + 'action/lookup'
@@ -26,9 +24,9 @@ class UrlShorter:
         """
         Creates a short url if valid, else returns None
 
-        :param str long_url:
-        :param str custom:
-        :param bool is_secret:
+        :param str long_url: The url to shorten.
+        :param str custom: The custom url to create if available.
+        :param bool is_secret: if not public, it's secret
         :return: a short link
         :rtype: str
         """
