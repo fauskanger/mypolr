@@ -7,13 +7,20 @@
 Welcome to mypolr's documentation!
 ##################################
 
+Code is hosted on GitHub:
+   https://github.com/fauskanger/mypolr
+
+-----
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    Overview <overview>
+   usage
    ClassSpecifications
-   License <licence>
+   licence
+
 
 
 ******************
@@ -24,13 +31,10 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
------
 
-Code is hosted on GitHub:
-   https://github.com/fauskanger/mypolr
-
+*************
 Quick example
-=============
+*************
 
 .. include:: ../README.rst
    :end-before: after-usage-example

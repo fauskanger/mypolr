@@ -2,7 +2,7 @@
 Overview
 ********
 
-``mypolr`` is a simple python package for creating short links using the
+This package, `mypolr`, is a simple python package for creating short links using the
 `Polr Project <https://polrproject.org>`_'s REST
 `API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_.
 
@@ -23,7 +23,7 @@ Requirements
 Polr Project
 ------------
 
-The Polr Project:
+Documentation:
     https://polrproject.org
 
 To use `mypolr`, you need a valid API key to a server with the Polr Project installed.
@@ -47,13 +47,13 @@ Tested on Python 3.6, but should work with version 3.3 and newer.
 Installation
 ============
 
-Coming soon
-------------
-
-**NOTE**: The `mypolr` package is *not yet* uploaded to `pip` or `conda`.
-
 With `pip`:
     ``pip install mypolr``
+
+
+Coming soon
+------------
+**NOTE**: The `mypolr` package is *not yet* uploaded to `conda`.
 
 With `conda`:
     ``conda install mypolr``
