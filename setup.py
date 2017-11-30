@@ -1,4 +1,5 @@
-from distutils.core import setup
+# from distutils.core import setup
+from setuptools import setup
 # To use a consistent encoding across file types
 # https://stackoverflow.com/questions/33891373/difference-between-io-open-vs-open-in-python
 from codecs import open
