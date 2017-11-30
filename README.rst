@@ -20,21 +20,23 @@ Clone source:
 
 Requirements
 ============
-Tested on Python 3.6, but should work with version 3.3 and newer.
-
-Python
-------
-When installing with `pip` or `conda` this will be installed automatically (if not already installed).
-
-There is only one requirement:
-
-- the awesome HTTP library `requests` (`Documentation <http://python-requests.org>`_).
 
 Polr Project
 ------------
 To use `mypolr`, you need a valid API key to a server with the Polr Project installed.
 
 You can obtain the API key by logging in to your Polr site and navigate to `<polr project root>/admin#developer`.
+
+Python
+------
+
+There is only one requirement:
+
+- the awesome HTTP library `requests` (`Documentation <http://python-requests.org>`_).
+
+When installing with `pip` or `conda` this will be installed automatically (if not already installed).
+
+Tested on Python 3.6, but should work with version 3.3 and newer.
 
 
 Installation
