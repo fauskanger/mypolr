@@ -1,21 +1,18 @@
 import requests
 from functools import wraps
 
-from mypolr.exceptions import CustomEndingUnavailable, BadApiRequest, UnauthorizedKeyError, QuotaExceededError, \
-    DebugTempWarning
+import mypolr.exceptions as errors
 
 
 def no_raise(f):
-    """Decorator/wrapper function to force return None instead of raising certain exceptions.
+    """Decorator/wrapper function to force return None instead of raising module exceptions.
 
-    Exceptions ignored are requests.HTTPError and those found in mypolr.exceptions."""
+    Exceptions that can be ignored are found in mypolr.exceptions."""
     @wraps(f)
     def new_f(*args, **kwargs):
         try:
             return f(*args, **kwargs)
-        except CustomEndingUnavailable:
-            pass
-        except requests.HTTPError:
+        except errors.MypolrError:
             pass
         return None
     return new_f
@@ -62,16 +59,16 @@ class UrlShorter:
             r = requests.get(endpoint, params)
             data = r.json()
             if r.status_code == 401 and not endpoint.endswith('lookup'):
-                raise UnauthorizedKeyError
+                raise errors.UnauthorizedKeyError
             elif r.status_code == 400 and not endpoint.endswith('shorten'):
-                raise BadApiRequest
+                raise errors.BadApiRequest
             elif r.status_code == 500:
-                r.raise_for_status()
+                raise errors.ServerOrConnectionError
             return data, r
         except ValueError:
-            raise ValueError('Cannot interpret API response: invalid JSON.')
-        except requests.ConnectionError:
-            raise
+            raise errors.BadApiResponse
+        except requests.RequestException:
+            raise errors.ServerOrConnectionError
 
     def shorten(self, long_url, custom_ending=None, is_secret=False):
         """
@@ -82,7 +79,6 @@ class UrlShorter:
         :param bool is_secret: if not public, it's secret
         :return: a short link
         :rtype: str
-        :raises: requests.ConnectionError if request is incomplete or without response.
         """
         params = {
             'url': long_url,
@@ -92,15 +88,15 @@ class UrlShorter:
         data, r = self._make_request(self.api_shorten_endpoint, params)
         if r.status_code == 400:
             if custom_ending is not None:
-                raise CustomEndingUnavailable(custom_ending)
-            raise BadApiRequest
+                raise errors.CustomEndingUnavailable(custom_ending)
+            raise errors.BadApiRequest
         elif r.status_code == 403:
-            raise QuotaExceededError
+            raise errors.QuotaExceededError
         action = data.get('action')
         short_url = data.get('result')
         if action == 'shorten' and short_url is not None:
             return short_url
-        raise DebugTempWarning  # TODO: remove after testing
+        raise errors.DebugTempWarning  # TODO: remove after testing
 
     def lookup(self, url_ending, url_key=None):
         """
@@ -113,7 +109,6 @@ class UrlShorter:
         :param str url_ending:
         :return: Url mapped to the url_ending or None if not existing
         :rtype: str or None
-        :raises: requests.ConnectionError if request is incomplete or without response.
         """
         params = {
             'url_ending': url_ending,
@@ -122,15 +117,15 @@ class UrlShorter:
         data, r = self._make_request(self.api_lookup_endpoint, params)
         if r.status_code == 401:
             if url_key is not None:
-                raise UnauthorizedKeyError('given url_key is not valid for secret lookup.')
-            raise UnauthorizedKeyError
+                raise errors.UnauthorizedKeyError('given url_key is not valid for secret lookup.')
+            raise errors.UnauthorizedKeyError
         elif r.status_code == 404:
             return None  # no url found in lookup
         action = data.get('action')
         full_url = data.get('result')
         if action == 'lookup' and full_url is not None:
             return full_url
-        raise DebugTempWarning  # TODO: remove after testing
+        raise errors.DebugTempWarning  # TODO: remove after testing
 
     @no_raise
     def shorten_no_raise(self, *args, **kwargs):
