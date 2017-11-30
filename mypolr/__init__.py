@@ -86,7 +86,7 @@ class UrlShorter:
         """
         params = {
             'url': long_url,
-            'is_secret': is_secret,
+            'is_secret': 'true' if is_secret else 'false',
             'custom_encoding': custom_ending
         }
         data, r = self._make_request(self.api_shorten_endpoint, params)

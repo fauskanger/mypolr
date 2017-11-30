@@ -15,9 +15,6 @@ GitHub:
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
-.. note:: **Disclaimer:** This package, `mypolr`, is not affiliated with the Polr Project.
-
-
 Requirements
 ============
 
@@ -27,12 +24,14 @@ To use `mypolr`, you need a valid API key to a server with the Polr Project inst
 
 You can obtain the API key by logging in to your Polr site and navigate to `<polr project root>/admin#developer`.
 
+.. note:: **Disclaimer:** This package, `mypolr`, is not affiliated with the Polr Project.
+
 Python
 ------
 
 There is only one requirement:
 
-- the awesome HTTP library `requests` (`Documentation <http://python-requests.org>`_).
+- ``requests``, an awesome HTTP library. (`Documentation <http://python-requests.org>`_).
 
 When installing with `pip` or `conda` this will be installed automatically (if not already installed).
 
@@ -59,7 +58,7 @@ Usage
 
 .. code-block:: python
 
-    from mypolr import UrlShorter
+    from mypolr import UrlShorter, exceptions
 
     # Replace with your values
     server_url = 'polr.example.com'
@@ -71,10 +70,20 @@ Usage
     # Create UrlShorter instance
     url_shorter = UrlShorter(server_url, api_key)
 
-    # Use
-    shorted_url = url_shorter.get_shorturl(long_url)
-    custom_url = url_shorter.get_shorturl(long_url, custom='myurl')
-    secret_url = url_shorter.get_shorturl(long_url, is_secret=True)
+    # Make short urls
+    shorted_url = url_shorter.shorten(long_url)
+    custom_url = url_shorter.shorten(long_url, custom=CUSTOM_ENDING)
+
+    # Given a short url ending, find full url and stats:
+    lookup_dict = url_shorter.lookup(SHORT_URL_ENDING)
+    full_url = lookup_dict.get('long_url')
+    n_clicks = lookup_dict.get('clicks')
+
+    # Secret urls have an additional key after the short url ending
+    # E.g the format <polr root folder> / SHORT_URL_ENDING / URL_KEY:
+    secret_url = url_shorter.shorten(long_url, is_secret=True)
+    # Secret lookups require url_key:
+    secret_lookup = url_shorter.lookup('aTiny2', url_key='secret_key')
 
 
 License

@@ -35,7 +35,7 @@ class UnauthorizedKeyError(requests.HTTPError):
     """
     def __init__(self, msg=None):
         msg = msg or 'API_KEY invalid or inactive.'
-        super(UnauthorizedKeyError, self).__init__('HTTP 401 Unauthorized: '.format(msg))
+        super(UnauthorizedKeyError, self).__init__('HTTP 401 Unauthorized: {}'.format(msg))
 
 
 class QuotaExceededError(requests.HTTPError):
