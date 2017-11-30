@@ -17,20 +17,6 @@ Clone source:
 
 .. note:: **Disclaimer:** This package, `mypolr`, is not affiliated with the Polr Project.
 
-Installation
-============
-
-Coming soon
-------------
-
-**NOTE**: The `mypolr` package is *not yet* uploaded to `pip` or `conda`.
-
-With `pip`:
-    ``pip install mypolr``
-
-With `conda`:
-    ``conda install mypolr``
-
 
 Requirements
 ============
@@ -48,7 +34,22 @@ Polr Project
 ------------
 To use `mypolr`, you need a valid API key to a server with the Polr Project installed.
 
-You can obtain the API key by logging in and navigate to `<polr project root>/admin#developer`.
+You can obtain the API key by logging in to your Polr site and navigate to `<polr project root>/admin#developer`.
+
+
+Installation
+============
+
+Coming soon
+------------
+
+**NOTE**: The `mypolr` package is *not yet* uploaded to `pip` or `conda`.
+
+With `pip`:
+    ``pip install mypolr``
+
+With `conda`:
+    ``conda install mypolr``
 
 
 Usage
