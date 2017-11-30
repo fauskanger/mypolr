@@ -1,24 +1,16 @@
+from pkg_resources import get_distribution, DistributionNotFound
 import requests
-from functools import wraps
 
 import mypolr.exceptions as errors
 
-
-def no_raise(f):
-    """Decorator/wrapper function to force return None instead of raising module exceptions.
-
-    Exceptions that can be ignored are found in mypolr.exceptions."""
-    @wraps(f)
-    def new_f(*args, **kwargs):
-        try:
-            return f(*args, **kwargs)
-        except errors.MypolrError:
-            pass
-        return None
-    return new_f
+try:
+    __version__ = get_distribution(__name__).version
+except DistributionNotFound:
+    # package is not installed
+    pass
 
 
-class UrlShorter:
+class PolrApi:
     """
     Url shorter instance that stores server and API key
 
@@ -49,7 +41,6 @@ class UrlShorter:
         :type params: dict
         :return: Tuple of response data, and the response instance
         :rtype: dict, requests.Response
-        :raises: requests.HTTPError if API_KEY is invalid (or inactive),
         """
         params = {
             **self._base_params,
@@ -75,7 +66,8 @@ class UrlShorter:
         Creates a short url if valid, else returns None
 
         :param str long_url: The url to shorten.
-        :param str or None custom_ending: The custom url to create if available.
+        :param custom_ending: The custom url to create if available.
+        :type custom_ending: str or None
         :param bool is_secret: if not public, it's secret
         :return: a short link
         :rtype: str
@@ -127,16 +119,12 @@ class UrlShorter:
             return full_url
         raise errors.DebugTempWarning  # TODO: remove after testing
 
-    @no_raise
+    @errors.no_raise
     def shorten_no_raise(self, *args, **kwargs):
-        """
-        Calls UrlShorter.shorten(*args, **kwargs) but returns None instead of raising module errors.
-        """
+        """Calls `PolrApi.shorten(*args, **kwargs)` but returns `None` instead of raising module errors."""
         return self.shorten(*args, **kwargs)
 
-    @no_raise
+    @errors.no_raise
     def lookup_no_raise(self, *args, **kwargs):
-        """
-        Calls UrlShorter.lookup(*args, **kwargs) but returns None instead of raising module errors.
-        """
+        """Calls `PolrApi.lookup(*args, **kwargs)` but returns `None` instead of raising module errors."""
         return self.lookup(*args, **kwargs)

@@ -1,4 +1,19 @@
 import requests
+from functools import wraps
+
+
+def no_raise(f):
+    """Decorator/wrapper function to force return None instead of raising module exceptions.
+
+    Exceptions that can be ignored are found in mypolr.exceptions."""
+    @wraps(f)
+    def new_f(*args, **kwargs):
+        try:
+            return f(*args, **kwargs)
+        except MypolrError:
+            pass
+        return None
+    return new_f
 
 
 class MypolrError(Exception):
@@ -31,7 +46,7 @@ class BadApiRequest(requests.HTTPError, MypolrError):
 
 
 class BadApiResponse(ValueError, MypolrError):
-    """Raised when a request is malformed or otherwise is not understandable by server."""
+    """Raised when a response is malformed and cannot be interpreted as valid JSON."""
     def __init__(self):
         msg = 'Cannot interpret API response: invalid JSON.'
         super(BadApiResponse, self).__init__(msg)
@@ -59,6 +74,7 @@ class QuotaExceededError(requests.HTTPError, MypolrError):
 
 
 class ServerOrConnectionError(requests.ConnectionError, MypolrError):
+    """Raised when there is a timeout, internal server error, or any other connection error."""
     def __init__(self):
         msg = 'API cannot be reached. Check connection or server status.'
         super(ServerOrConnectionError, self).__init__(msg)

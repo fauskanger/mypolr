@@ -24,3 +24,14 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+-----
+
+Code is hosted on GitHub:
+   https://github.com/fauskanger/mypolr
+
+Quick example
+=============
+
+.. include:: ../README.rst
+   :end-before: after-usage-example
+   :start-after: before-usage-example

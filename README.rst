@@ -15,11 +15,17 @@ GitHub:
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
+-----
+
 Requirements
 ============
 
 Polr Project
 ------------
+
+The Polr Project:
+    https://polrproject.org
+
 To use `mypolr`, you need a valid API key to a server with the Polr Project installed.
 
 You can obtain the API key by logging in to your Polr site and navigate to `<polr project root>/admin#developer`.
@@ -56,9 +62,11 @@ With `conda`:
 Usage
 =====
 
+.. before-usage-example
+
 .. code-block:: python
 
-    from mypolr import UrlShorter, exceptions
+    from mypolr import PolrApi, exceptions
 
     # Replace with your values
     server_url = 'polr.example.com'
@@ -67,8 +75,8 @@ Usage
     # Example url to shorten
     long_url = 'https://some.long.example.com/long/url'
 
-    # Create UrlShorter instance
-    url_shorter = UrlShorter(server_url, api_key)
+    # Create PolrApi instance
+    url_shorter = PolrApi(server_url, api_key)
 
     # Make short urls
     shorted_url = url_shorter.shorten(long_url)
@@ -85,6 +93,7 @@ Usage
     # Secret lookups require url_key:
     secret_lookup = url_shorter.lookup('aTiny2', url_key='secret_key')
 
+.. after-usage-example
 
 License
 =======
