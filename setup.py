@@ -5,10 +5,14 @@ from setuptools import setup
 from codecs import open
 from os import path
 
+short_description = 'Simple Python package for using the Polr Project REST API.'
 
-here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+# here = path.abspath(path.dirname(__file__))
+# with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+#     long_description = f.read()
+
+rtd = 'https://mypolr.readthedocs.io'
+long_description = 'Read documentation for more info on {}'.format(rtd)
 
 setup(
     name='mypolr',
@@ -18,7 +22,7 @@ setup(
     author='Thomas Fauskanger',
     author_email='',
     keywords='polr project shorturl api',
-    description='Simple Python package for using the Polr Project REST API',
+    description=short_description,
     long_description=long_description,
     requires=['requests'],
     python_requires='>=3.3',
