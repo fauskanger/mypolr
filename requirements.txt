@@ -11,6 +11,7 @@ idna==2.6
 imagesize==0.7.1
 Jinja2==2.10
 MarkupSafe==1.0
+mypolr==1.0.0
 pkginfo==1.4.1
 pycparser==2.18
 Pygments==2.2.0
