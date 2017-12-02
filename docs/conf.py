@@ -29,7 +29,7 @@ import sphinx_rtd_theme
 from pkg_resources import get_distribution
 
 
-autodoc_mock_imports = ['pkg_resources']
+autodoc_mock_imports = ['pkg_resources', 'mypolr']
 # The full version, including alpha/beta/rc tags.
 release = get_distribution('mypolr').version
 # from setuptools_scm import get_version
