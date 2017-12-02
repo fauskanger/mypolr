@@ -15,8 +15,6 @@ GitHub:
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
------
-
 Requirements
 ============
 
