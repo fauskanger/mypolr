@@ -10,8 +10,6 @@ Welcome to mypolr's documentation!
 Code is hosted on GitHub:
    https://github.com/fauskanger/mypolr
 
------
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
