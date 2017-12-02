@@ -7,9 +7,9 @@ from os import path
 
 short_description = 'Simple Python package for using the Polr Project REST API.'
 
-# here = path.abspath(path.dirname(__file__))
-# with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-#     long_description = f.read()
+here = path.abspath(path.dirname(__file__))
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 rtd = 'https://mypolr.readthedocs.io'
 long_description = 'Read documentation for more info on {}'.format(rtd)
@@ -29,6 +29,6 @@ setup(
 
     # Get version from git: https://pypi.python.org/pypi/setuptools_scm
     # version='0.1.0',
-    use_scm_version=True,
+    use_scm_version={"root": "..", "relative_to": __file__},  # True,
     setup_requires=['setuptools_scm'],
 )
