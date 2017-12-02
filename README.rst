@@ -76,22 +76,22 @@ Usage
     long_url = 'https://some.long.example.com/long/url'
 
     # Create PolrApi instance
-    url_shorter = PolrApi(server_url, api_key)
+    api = PolrApi(server_url, api_key)
 
     # Make short urls
-    shorted_url = url_shorter.shorten(long_url)
-    custom_url = url_shorter.shorten(long_url, custom=CUSTOM_ENDING)
+    shorted_url = api.shorten(long_url)
+    custom_url = api.shorten(long_url, custom=CUSTOM_ENDING)
 
     # Given a short url ending, find full url and stats:
-    lookup_dict = url_shorter.lookup(SHORT_URL_ENDING)
+    lookup_dict = api.lookup(SHORT_URL_ENDING)
     full_url = lookup_dict.get('long_url')
     n_clicks = lookup_dict.get('clicks')
 
     # Secret urls have an additional key after the short url ending
     # E.g the format <polr root folder> / SHORT_URL_ENDING / URL_KEY:
-    secret_url = url_shorter.shorten(long_url, is_secret=True)
+    secret_url = api.shorten(long_url, is_secret=True)
     # Secret lookups require url_key:
-    secret_lookup = url_shorter.lookup('aTiny2', url_key='secret_key')
+    secret_lookup = api.lookup('aTiny2', url_key='secret_key')
 
 .. after-usage-example
 
