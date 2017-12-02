@@ -26,10 +26,12 @@ import sphinx_rtd_theme
 # built documents.
 #
 # Get versions from package (which again gets it from setuptools_scm
-from pkg_resources import get_distribution
-
-# The full version, including alpha/beta/rc tags.
-release = get_distribution('mypolr').version
+# from pkg_resources import get_distribution
+#
+# # The full version, including alpha/beta/rc tags.
+# release = get_distribution('..mypolr').version
+from setuptools_scm import get_version
+release = get_version(root='..', relative_to=__file__)
 # The short X.Y version.
 version = '.'.join(release.split('.')[:2])
 

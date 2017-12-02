@@ -29,6 +29,6 @@ setup(
 
     # Get version from git: https://pypi.python.org/pypi/setuptools_scm
     # version='0.1.0',
-    use_scm_version={"root": "..", "relative_to": __file__},  # True,
+    use_scm_version= True,
     setup_requires=['setuptools_scm'],
 )
