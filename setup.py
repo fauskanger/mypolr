@@ -26,9 +26,26 @@ setup(
     long_description=long_description,
     requires=['requests'],
     python_requires='>=3.3',
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Information Technology',
+        'Intended Audience :: Other Audience',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Software Development',
+        'Topic :: Utilities'
+    ],
 
     # Get version from git: https://pypi.python.org/pypi/setuptools_scm
     # version='0.1.0',
-    use_scm_version= True,
+    use_scm_version=True,
     setup_requires=['setuptools_scm'],
 )
