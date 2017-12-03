@@ -15,19 +15,28 @@ class PolrApi:
     Url shorter instance that stores server and API key
 
     :param str api_server: The url to your server with Polr Project installed.
-    :param str api_key: The API key associated with an user on server.
+    :param str api_key: The API key associated with a user on the server.
     :param str api_root: API root endpoint.
     """
     def __init__(self, api_server, api_key, api_root='/api/v2/', ):
-        self.api_root = api_server + api_root
-        self.api_shorten_endpoint = self.api_root + 'action/shorten'
-        self.api_lookup_endpoint = self.api_root + 'action/lookup'
-        self.api_link_data_endpoint = self.api_root + 'data/link'
+        # Clean url and paths
+        self.api_root = api_root if api_root.startswith('/') else '/{}'.format(api_root)
+        self.api_root = api_root if api_root.endswith('/') else '{}/'.format(api_root)
+        self.api_server = api_server if not api_server.endswith('/') else api_server[:-1]
+        # Endpoint paths
+        self.api_base = self.api_server + self.api_root
+        self.api_shorten_endpoint = self.api_base + 'action/shorten'
+        self.api_lookup_endpoint = self.api_base + 'action/lookup'
+        self.api_link_data_endpoint = self.api_base + 'data/link'
+        # API params
         self.api_key = api_key
         self._base_params = {
             'key': self.api_key,
             'response_type': 'json'
         }
+
+    def __repr__(self):
+        return '{}({})'.format(self.__class__.__name__, self.api_base)
 
     def _make_request(self, endpoint, params):
         """
@@ -90,7 +99,24 @@ class PolrApi:
             return short_url
         raise errors.DebugTempWarning  # TODO: remove after testing
 
-    def lookup(self, url_ending, url_key=None):
+    def _get_ending(self, lookup_url):
+        """
+        Returns the short url ending from a short url or an short url ending.
+
+        Example:
+         - Given `<your Polr server>/5N3f8`, return `5N3f8`.
+         - Given `5N3f8`, return `5N3f8`.
+
+        :param lookup_url: A short url or short url ending
+        :type lookup_url: str
+        :return: The url ending
+        :rtype: str
+        """
+        if lookup_url.startswith(self.api_server):
+            return lookup_url[len(self.api_server) + 1:]
+        return lookup_url
+
+    def lookup(self, lookup_url, url_key=None):
         """
         Looks up the url_ending to obtain the full url if it exists.
 
@@ -98,10 +124,11 @@ class PolrApi:
 
         :param url_key: optional URL ending key for lookups against secret URLs
         :type url_key: str or None
-        :param str url_ending:
+        :param str lookup_url: An url ending or full short url address
         :return: Url mapped to the url_ending or None if not existing
         :rtype: str or None
         """
+        url_ending = self._get_ending(lookup_url)
         params = {
             'url_ending': url_ending,
             'url_key': url_key
@@ -112,7 +139,7 @@ class PolrApi:
                 raise errors.UnauthorizedKeyError('given url_key is not valid for secret lookup.')
             raise errors.UnauthorizedKeyError
         elif r.status_code == 404:
-            return None  # no url found in lookup
+            return False  # no url found in lookup
         action = data.get('action')
         full_url = data.get('result')
         if action == 'lookup' and full_url is not None:
@@ -127,4 +154,4 @@ class PolrApi:
     @errors.no_raise
     def lookup_no_raise(self, *args, **kwargs):
         """Calls `PolrApi.lookup(*args, **kwargs)` but returns `None` instead of raising module errors."""
-        return self.lookup(*args, **kwargs)
+        return self.lookup(*args, **kwargs) or False

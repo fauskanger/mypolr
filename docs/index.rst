@@ -28,12 +28,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-*************
-Quick example
-*************
-
-.. include:: ../README.rst
-   :end-before: after-usage-example
-   :start-after: before-usage-example
