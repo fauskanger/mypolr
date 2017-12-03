@@ -2,14 +2,14 @@
 from setuptools import setup
 # To use a consistent encoding across file types
 # https://stackoverflow.com/questions/33891373/difference-between-io-open-vs-open-in-python
-from codecs import open
-from os import path
+# from codecs import open
+# from os import path
 
 short_description = 'Simple Python package for using the Polr Project REST API.'
 
-here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+# here = path.abspath(path.dirname(__file__))
+# with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+#     long_description = f.read()
 
 rtd = 'https://mypolr.readthedocs.io'
 long_description = 'Read documentation for more info on {}'.format(rtd)
@@ -27,7 +27,6 @@ setup(
     install_requires=['requests'],
     python_requires='>=3.3',
     classifiers=[
-        'Development Status :: 4 - Beta',
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
