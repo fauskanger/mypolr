@@ -24,7 +24,7 @@ setup(
     keywords='polr project shorturl api',
     description=short_description,
     long_description=long_description,
-    requires=['requests'],
+    install_requires=['requests'],
     python_requires='>=3.3',
     classifiers=[
         'Development Status :: 4 - Beta',
