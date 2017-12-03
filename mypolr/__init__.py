@@ -51,12 +51,14 @@ class PolrApi:
         :return: Tuple of response data, and the response instance
         :rtype: dict, requests.Response
         """
-        params = {
-            **self._base_params,
-            **params
-        }
+        # params = {
+        #     **self._base_params,  # Mind order to allow params to overwrite base params
+        #     **params
+        # }
+        full_params = self._base_params.copy()
+        full_params.update(params)
         try:
-            r = requests.get(endpoint, params)
+            r = requests.get(endpoint, full_params)
             data = r.json()
             if r.status_code == 401 and not endpoint.endswith('lookup'):
                 raise errors.UnauthorizedKeyError

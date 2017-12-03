@@ -6,9 +6,13 @@
 ##################################
 Welcome to mypolr's documentation!
 ##################################
+.. include:: ../README.rst
+   :end-before: after-introduction-links
+   :start-after: before-introduction-links
 
-Code is hosted on GitHub:
-   https://github.com/fauskanger/mypolr
+.. include:: ../README.rst
+   :end-before: after-polr-affiliation-disclaimer
+   :start-after: before-polr-affiliation-disclaimer
 
 .. toctree::
    :maxdepth: 2
