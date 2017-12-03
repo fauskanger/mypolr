@@ -10,6 +10,7 @@ This section is generated with the Sphinx
    :members:
    :undoc-members:
 
+.. _exceptions:
 
 Exceptions
 ==========

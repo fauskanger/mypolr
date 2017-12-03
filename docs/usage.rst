@@ -36,7 +36,7 @@ Here is an incomplete example. See `Advanced Usage`_ below for a more detailed d
     # E.g the format <polr root folder> / SHORT_URL_ENDING / URL_KEY:
     secret_url = api.shorten(long_url, is_secret=True)
     # Secret lookups require url_key:
-    secret_lookup = api.lookup('aTiny2', url_key='secret_key')
+    secret_lookup = api.lookup(SHORT_URL_ENDING, url_key=URL_KEY)
 
 .. after-usage-example
 
@@ -45,11 +45,11 @@ Here is an incomplete example. See `Advanced Usage`_ below for a more detailed d
 
 Advanced Usage
 ==============
-This example is more thorough, and covers the various errors and edge cases you might encounter with the Polr Project
-API.
+This section is more thorough than the one above,
+and covers the various errors and edge cases you might encounter with the Polr Project API.
 
-The following examples assume the Polr Project is installed on a server at `https://ti.ny`,
-and that a valid API_KEY is stored in a submodule ``auth.secrets``.
+The following examples assume the Polr Project to be installed on a server at `https://ti.ny`,
+and that a valid API_KEY is stored in a separate module ``my_secrets``.
 
 Set up API
 ----------
@@ -59,7 +59,7 @@ This is how the API would be set up given the aforementioned (and arbitrary) ass
 .. code-block:: python
 
     from mypolr import PolrApi, exceptions
-    from auth.secrets import api_key
+    from my_secrets import api_key
 
     # Example url to shorten
     long_url = 'https://stackoverflow.com/questions/tagged/python'
@@ -99,6 +99,8 @@ Given a long url, the ``PolrApi.shorten()``-method produces a short url on the f
     except exceptions.BadApiResponse:
         print('Response from server was not valid JSON.')
 
+.. _`lookup() example`:
+
 Lookup short URLs
 -----------------
 The ``PolrApi.lookup()``-method accepts either a short url ending, or a full short url, and returns ``False`` if no
@@ -113,7 +115,7 @@ url is found, or returns a dictionary of info about the link.
         if url_info is False:
             print('No url found with that ending.')
         else:
-            print('Full url is: {}'.format(url_info.get('long_url')))
+            print('Long url is: {}'.format(url_info.get('long_url')))
     except exceptions.UnauthorizedKeyError:
         print('API_KEY invalid or inactive.')
     except exceptions.ServerOrConnectionError:
@@ -125,7 +127,7 @@ url is found, or returns a dictionary of info about the link.
 
 Lookup result
 '''''''''''''
-Response of a successful lookup results in a dictionary á la something like this:
+Response of a successful lookup is a dictionary á la something like this:
 
 .. code-block:: python
 
@@ -147,10 +149,10 @@ Response of a successful lookup results in a dictionary á la something like thi
     }
 
 
-Secret URLS
+Secret URLs
 -----------
 
-Secret urls are made with the form ``https://ti.ny / URL_ENDING / URL_KEY``.
+Secret urls differ from normal short urls in the way that they have the form ``https://ti.ny / URL_ENDING / URL_KEY``.
 The additional part, URL_KEY, is required as a parameter when doing lookup of secret urls.
 
 .. code-block:: python
@@ -170,17 +172,19 @@ The additional part, URL_KEY, is required as a parameter when doing lookup of se
     except exceptions.UnauthorizedKeyError:
         print('Your URL_KEY is wrong, or the API_KEY is invalid.')
 
-.. note:: The ``exceptions.UnauthorizedKeyError`` should be caught `in addition to` the
-          others in the ``PolrApi.lookup()`` example above.
+.. note:: The ``exceptions.UnauthorizedKeyError`` in the previous example is the sole catch
+          in order to simplify the example about secret lookups,
+          but as seen in the `lookup() example`_ above,
+          this isn't the only exception that could be raised.
 
 Ignoring Errors
 ---------------
-By applying the ``mypolr.exceptions.no_raise_(f)`` decorator, the
-``PolrApi.shorten_no_raise()`` and ``PolrApi.lookup_no_raise()``
-will act as their corresponing normal methods,
+The ``mypolr.exceptions.no_raise_(f)`` decorator has been applied to both
+``PolrApi.shorten_no_raise()`` and ``PolrApi.lookup_no_raise()``,
+and will act as their corresponding normal methods,
 but will return ``None`` instead of raising **module** exceptions upon errors.
 
-The ``PolrApi.lookup_no_raise()``-method still returns ``False`` when no lookup is found.
+The ``PolrApi.lookup_no_raise()``-method still returns ``False`` when no url is found (if no error occurs).
 
 .. code-block:: python
 
@@ -192,12 +196,12 @@ The ``PolrApi.lookup_no_raise()``-method still returns ``False`` when no lookup 
         print('There was an error with the url shortening process.')
 
     if url_info is False:
-        print('No url with that ending')
+        print('No url with that ending.')
     elif url_info is None:
         print('There was an error with the url lookup process.')
 
-.. warning:: Even though using the `\*_no_raise`-methods allows for easy check of failure/success,
-             there is no feedback on what went wrong upon failure.
+.. warning:: Even though the use of `\*_no_raise`-methods allows for easy check of failure/success,
+             there is no feedback of what went wrong upon failure.
 
 .. note:: The `\*_no_raise`-methods will still raise *other* exceptions, and
           **ONLY** errors derived from ``mypolr.exception.MypolrError`` will instead return ``None``.

@@ -6,7 +6,7 @@ This package, `mypolr`, is a simple python package for creating short links usin
 `Polr Project <https://polrproject.org>`_'s REST
 `API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_.
 
-Documentation and User Guide:
+User Guide and documentation:
     https://mypolr.readthedocs.io
 
 GitHub:
@@ -56,6 +56,11 @@ Coming soon
 With `conda`:
     ``conda install mypolr``
 
+ToBeDone
+========
+ - Build and upload package to ``conda``.
+ - Add ``:raises:`` docstring fields to methods/docs.
+ - Implement the ``/data/link``-endpoint if necessary.
 
 
 License
