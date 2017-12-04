@@ -56,17 +56,11 @@ Installation
 With `pip`:
     ``pip install mypolr``
 
-
-Coming soon
-------------
-**NOTE**: The `mypolr` package is *not yet* uploaded to `conda`.
-
 With `conda`:
-    ``conda install mypolr``
+    ``conda install -c fauskanger mypolr``
 
 ToBeDone
 ========
- - Build and upload package to ``conda``.
  - Add ``:raises:`` docstring fields to methods/docs.
  - Implement the ``/data/link``-endpoint if necessary.
 
