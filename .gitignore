@@ -105,3 +105,4 @@ ENV/
 
 # Secrets for testing
 auth/*
+/my_example.py
