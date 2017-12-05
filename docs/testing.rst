@@ -73,7 +73,7 @@ Read more about how to `integrate tox and pytest <tox_pytest_>`_.
 .. _fix_conda_tox:
 
 Working with Windows, conda, tox
---------------------------------
+================================
 
 .. note::
 
