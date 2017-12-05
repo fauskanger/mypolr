@@ -105,4 +105,6 @@ ENV/
 
 # Secrets for testing
 auth/*
+
+# File used to create usage examples to docs
 /my_example.py
