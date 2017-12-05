@@ -21,6 +21,7 @@ Welcome to mypolr's documentation!
    Overview <overview>
    usage
    ClassSpecifications
+   testing
    licence
 
 
