@@ -1,4 +1,5 @@
 # from distutils.core import setup
+import sys
 from setuptools import setup
 # To use a consistent encoding across file types
 # https://stackoverflow.com/questions/33891373/difference-between-io-open-vs-open-in-python
@@ -11,8 +12,14 @@ short_description = 'Simple Python package for using the Polr Project REST API.'
 # with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 #     long_description = f.read()
 
+# Workaround until PyPI is able to build README.rst
 rtd = 'https://mypolr.readthedocs.io'
 long_description = 'Read documentation for more info on {}'.format(rtd)
+
+# Only include pytest-runner if invoked:
+needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
+pytest_runner = ['pytest-runner'] if needs_pytest else []
+
 
 setup(
     name='mypolr',
@@ -25,7 +32,7 @@ setup(
     description=short_description,
     long_description=long_description,
     install_requires=['requests'],
-    python_requires='>=3.3',
+    python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*',  # 2.7 or 3.3+
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -45,5 +52,6 @@ setup(
 
     # Get version from git: https://pypi.python.org/pypi/setuptools_scm
     use_scm_version=True,
-    setup_requires=['setuptools_scm'],
+    setup_requires=['setuptools_scm'] + pytest_runner,
+    tests_requires=['pytest']
 )
