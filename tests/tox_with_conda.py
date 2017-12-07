@@ -1,7 +1,5 @@
-#
-# Shared as a gist on:
-#   https://gist.github.com/fauskanger/1eff19047f00ebd0a52f1f8698f9f0a7
-#
+#   Source:
+#       https://github.com/fauskanger/tox_with_conda
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
 # Examples on how to use
@@ -20,9 +18,13 @@
 from subprocess import run
 from os.path import join
 
-from sphinx.addnodes import desc
-
+# The location where tox expects python to be installed.
+# E.g. C:\Python27 or C:\Python35
 DEFAULT_BASE = join('C:\\', 'Python')
+
+# The prefix for names of newly created conda environments.
+# E.g. py27 or py35 in E:\Anaconda3\envs
+DEFAULT_ENV_PREFIX = 'py'
 
 
 class ToxEnvMatcher:
@@ -63,9 +65,10 @@ class ToxEnvMatcher:
     :param str envs_dir: The path to where new conda environments will be created
     :param str default_base: The base of the 'default' location. Usually it's ``C:\Python``
     """
-    def __init__(self, envs_dir, default_base=DEFAULT_BASE):
+    def __init__(self, envs_dir, default_base=DEFAULT_BASE, env_prefix=DEFAULT_ENV_PREFIX):
         self.envs_dir = envs_dir
         self.default_base = default_base
+        self.env_prefix = env_prefix
 
     def __repr__(self):
         return '{}({})'.format(self.__class__.__name__, self.envs_dir)
@@ -91,7 +94,14 @@ class ToxEnvMatcher:
         run(symlink_cmd, shell=True)
 
     def _get_env_folder(self, version):
-        return join(self.envs_dir, 'py{}'.format(version))
+        """
+        Given version, return the folder in which a new conda environment is created.
+
+        :param str version: A string on the form 'XY', e.g. '27' or '36'
+        :return: The path to the new environment, e.g.: *E:\Anaconda3\envs\py27*
+        :rtype: str
+        """
+        return join(self.envs_dir, '{}{}'.format(self.env_prefix, version))
 
     def _create_cmd_args(self, version):
         env_dir = self._get_env_folder(version)
@@ -107,7 +117,12 @@ class ToxEnvMatcher:
 if __name__ == '__main__':
     import argparse
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Will create conda environements in the <env_dir> for each version "
+                                                 "of the <versions>. "
+                                                 "Each environment will be create on the form "
+                                                 "<env_dir>\\<env_prefix><version> and "
+                                                 "have a 'Directory Juntion' symbolic link made from "
+                                                 "<base><version>.")
     parser.add_argument("env_dir",
                         help="The folder where conda environments should be installed.")
     parser.add_argument("versions", nargs='*',
@@ -115,12 +130,16 @@ if __name__ == '__main__':
     parser.add_argument("-b", "--base", default=DEFAULT_BASE,
                         help="Base of the path which tox expects to find Python installed. "
                              "Default: {}.".format(DEFAULT_BASE))
+    parser.add_argument("-p", "--env_prefix", default=DEFAULT_ENV_PREFIX,
+                        help="Prefix to add before the version in newly created environments. "
+                             "Default: {}.".format(DEFAULT_ENV_PREFIX))
     args = parser.parse_args()
 
     print('env_dir: ', args.env_dir)
+    print('env_prefix: ', args.env_prefix)
     print('versions: ', args.versions)
     print('--base: ', args.base)
 
-    tem = ToxEnvMatcher(args.env_dir, default_base=args.base)
+    tem = ToxEnvMatcher(args.env_dir, default_base=args.base, env_prefix=args.env_prefix)
     for version in args.versions:
         tem.make(version)

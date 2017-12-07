@@ -117,3 +117,60 @@ Tips 3:
     This allows you to create envs in the same drive as the rest of Anaconda without the need to use
     the ``--prefix`` option.
 
+Fast and easy fix
+-----------------
+
+The *tests/tox_with_conda.py*-file is a utility for making the steps above with a single call.
+
+The ``ToxEnvMatcher``-class can be used from Python to create environments and set up the needed symlinks,
+but it's also possible to use the file from command line.
+
+Examples of use in Python:
+
+.. code-block:: python
+
+    my_envs = join('E:\\', 'Anaconda3', 'envs')
+    tem = ToxEnvMatcher(my_envs)
+    for version in '27,34,35,36'.split(','):
+        tem.make(version)
+
+Examples of use from cmd.exe:
+
+.. code-block:: none
+
+    E:\dev\mypolr\tests> tox_with_conda.py E:\Anaconda3\envs 27 34 35 36
+
+Environment prefix (defaults to *py*) can be overridden with -p/--env_prefix options:
+
+.. code-block:: python
+
+    E:\dev\mypolr\tests> python tox_with_conda.py E:\Anaconda3\envs 27 34 35 36 -p Python
+
+
+This will create new environments in ``E:\Anaconda3\envs\PythonXY`` instead of ``E:\Anaconda3\envs\pyXY``
+
+If, for some reason you need to, it's possible to use
+the ``-b``/``--base`` option to override the default base location (``C:\Python``):
+
+.. code-block:: none
+
+    E:\dev\mypolr\tests> tox_with_conda.py E:\Anaconda3\envs 27 34 35 36 --base D:\Python
+
+.. note:: The *tox_with_conda.py*-file has been uploaded to a repository of its own on
+          https://github.com/fauskanger/tox_with_conda and can also be installed with pip:
+
+          .. code-block:: none
+
+              pip install tox_with_conda
+
+          If installed with pip, then instead of
+
+          .. code-block:: none
+
+              python tox_with_conda.py ...
+
+          use
+
+          .. code-block:: none
+
+              python -m tox_with_conda ...
