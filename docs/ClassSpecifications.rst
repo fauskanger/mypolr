@@ -24,6 +24,6 @@ Exceptions
 Tests
 =====
 
-.. automodule:: tests.tox_with_conda
+.. automodule:: tox_with_conda
    :members:
    :undoc-members:

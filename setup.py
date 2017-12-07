@@ -50,7 +50,7 @@ setup(
         'Topic :: Utilities'
     ],
 
-    # Get version from git: https://pypi.python.org/pypi/setuptools_scm
+    # Obtains version from git tags with setuptools_scm
     use_scm_version=True,
     setup_requires=['setuptools_scm'] + pytest_runner,
     tests_requires=['pytest']
