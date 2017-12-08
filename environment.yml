@@ -4,12 +4,14 @@ channels:
 - defaults
 dependencies:
 - alabaster=0.7.10=py36_1
+- anaconda-client=1.6.5=py_0
 - asn1crypto=0.22.0=py36_0
 - babel=2.5.1=py36_0
 - ca-certificates=2017.11.5=0
 - certifi=2017.11.5=py36_0
 - cffi=1.11.2=py36_0
 - chardet=3.0.4=py36_0
+- clyent=1.2.2=py36_0
 - colorama=0.3.9=py36_0
 - cryptography=2.0.3=py36_0
 - decorator=4.1.2=py36_0
@@ -20,7 +22,10 @@ dependencies:
 - ipython_genutils=0.2.0=py36_0
 - jedi=0.10.2=py36_0
 - jinja2=2.10=py36_0
+- jsonschema=2.5.1=py36_0
+- jupyter_core=4.4.0=py_0
 - markupsafe=1.0=py36_0
+- nbformat=4.4.0=py36_0
 - openssl=1.0.2m=vc14_0
 - pickleshare=0.7.4=py36_0
 - pip=9.0.1=py36_0
@@ -31,7 +36,9 @@ dependencies:
 - pyopenssl=17.2.0=py36_0
 - pysocks=1.6.7=py36_0
 - python=3.6.3=1
+- python-dateutil=2.6.1=py36_0
 - pytz=2017.3=py_2
+- pyyaml=3.12=py36_1
 - requests=2.18.4=py36_1
 - requests-toolbelt=0.8.0=py36_0
 - setuptools=37.0.0=py36_0
@@ -51,19 +58,25 @@ dependencies:
 - wheel=0.30.0=py_1
 - win_inet_pton=1.0.1=py36_1
 - wincertstore=0.2=py36_0
+- yaml=0.1.7=vc14_0
 - pip:
   - attrs==17.3.0
+  - cookies==2.2.1
+  - httpretty==0.8.14
   - ipython-genutils==0.2.0
-  - mypolr (e:\dev\mypolr)==1.1.6.dev2+gdb056f9.d20171205
+  - jupyter-core==4.4.0
+  - mypolr (e:\dev\mypolr)==1.1.6.dev9+gdac5c70.d20171207
   - pluggy==0.6.0
   - prompt-toolkit==1.0.15
   - py==1.5.2
   - pytest==3.3.0
   - requests-mock==1.3.0
+  - responses==0.8.1
   - restructuredtext-lint==1.1.2
   - setuptools-scm==1.15.6
   - sphinx-rtd-theme==0.2.4
   - tox==2.9.1
+  - tox-with-conda (e:\dev\tox_with_conda)==1.0.3
   - win-inet-pton==1.0.1
 prefix: E:\Anaconda3\envs\benv
 

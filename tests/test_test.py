@@ -1,11 +1,9 @@
-# assert 5 == 4
+import pytest
 
 
 class TestClass(object):
-    def test_one(self):
+    def test_pytest(self):
         x = "this"
         assert 'h' in x
-
-    # def test_two(self):
-    #     x = "hello"
-    #     assert hasattr(x, 'check')
+        with pytest.raises(ValueError):
+            raise ValueError('Pytest can test this')

@@ -53,5 +53,5 @@ setup(
     # Obtains version from git tags with setuptools_scm
     use_scm_version=True,
     setup_requires=['setuptools_scm'] + pytest_runner,
-    tests_requires=['pytest']
+    tests_requires=['pytest', 'responses']
 )
