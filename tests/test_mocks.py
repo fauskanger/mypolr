@@ -4,17 +4,6 @@ import responses
 
 
 @responses.activate
-def test_multiple_to_same_url():
-    responses.add(responses.GET, 'http://twitter.com/api/1/foobar', status=500)
-    responses.add(responses.GET, 'http://twitter.com/api/1/foobar', json='{}', status=200)
-
-    resp = requests.get('http://twitter.com/api/1/foobar')
-    assert resp.status_code == 500
-    resp = requests.get('http://twitter.com/api/1/foobar')
-    assert resp.status_code == 200
-
-
-@responses.activate
 def test_responses_demo():
     responses.add(responses.GET, 'http://twitter.com/api/1/foobar',
                   json={'error': 'not found'}, status=404)
@@ -60,10 +49,3 @@ def test_mocking():
     with pytest.raises(requests.ConnectionError):
         requests.get('http://nrk.no')
 
-
-@responses.activate
-def test_simple():
-    responses.add(responses.GET, 'http://twitter.com/api/1/foobar',
-                  body=ValueError('JSON was dumb'))
-    with pytest.raises(ValueError):
-        requests.get('http://twitter.com/api/1/foobar')
