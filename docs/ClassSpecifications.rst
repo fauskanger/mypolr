@@ -38,5 +38,5 @@ ResponseErrorMap
 
 Eases the burden of making repeated calls to the same url for testing when using ``pytest`` and ``responses``.
 
-.. automodule:: tests.test_mypolr
+.. automodule:: test_mypolr
    :members:

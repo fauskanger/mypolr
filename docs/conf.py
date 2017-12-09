@@ -12,11 +12,9 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-
-
-import os
 import sys
-
+from os import path
+# import os
 # import ReadTheDocs theme
 import sphinx_rtd_theme
 
@@ -42,7 +40,10 @@ version = '.'.join(release.split('.')[:2])
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 # sys.path.insert(0, os.path.abspath('../.'))
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, path.abspath('..'))
+
+# Add tests-folder for Sphinx' autodoc discovery
+sys.path.append(path.join(path.abspath('..'), 'tests'))
 
 
 # -- General configuration ------------------------------------------------
