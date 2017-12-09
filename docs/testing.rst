@@ -36,7 +36,7 @@ Multiple versions
 =================
 
 Tests can be run for multiple python versions in separate *virtualenv*\ s using tox_.
-It's setup is defined in the *tox.ini*, and will run tests in separate environments for:
+Its setup is defined in the *tox.ini*, and will run tests in separate environments for:
 
 - Python 2.7
 - Python 3.4

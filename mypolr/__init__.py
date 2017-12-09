@@ -123,15 +123,38 @@ class PolrApi:
 
     def lookup(self, lookup_url, url_key=None):
         """
-        Looks up the url_ending to obtain the full url if it exists.
+        Looks up the url_ending to obtain information about the short url.
 
-        If it exists, the API will return with the destination of that URL. Se
+        If it exists, the API will return a dictionary with information, including
+        the long_url that is the destination of the given short url URL.
 
+
+        The lookup object looks like something like this:
+
+        .. code-block:: python
+
+            {
+                'clicks': 42,
+                'created_at':
+                    {
+                        'date': '2017-12-03 00:40:45.000000',
+                        'timezone': 'UTC',
+                        'timezone_type': 3
+                    },
+                'long_url': 'https://stackoverflow.com/questions/tagged/python',
+                'updated_at':
+                    {
+                        'date': '2017-12-24 13:37:00.000000',
+                        'timezone': 'UTC',
+                        'timezone_type': 3
+                    }
+            }
+
+        :param str lookup_url: An url ending or full short url address
         :param url_key: optional URL ending key for lookups against secret URLs
         :type url_key: str or None
-        :param str lookup_url: An url ending or full short url address
-        :return: Url mapped to the url_ending or None if not existing
-        :rtype: str or None
+        :return: Lookup dictionary containing, among others things, the long url; or None if not existing
+        :rtype: dict or None
         """
         url_ending = self._get_ending(lookup_url)
         params = {
