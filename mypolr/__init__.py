@@ -18,11 +18,14 @@ class PolrApi:
     :param str api_key: The API key associated with a user on the server.
     :param str api_root: API root endpoint.
     """
-    def __init__(self, api_server, api_key, api_root='/api/v2/', ):
+    def __init__(self, api_server, api_key, api_root='/api/v2/'):
         # Clean url and paths
-        self.api_root = api_root if api_root.startswith('/') else '/{}'.format(api_root)
-        self.api_root = api_root if api_root.endswith('/') else '{}/'.format(api_root)
-        self.api_server = api_server if not api_server.endswith('/') else api_server[:-1]
+        api_root = api_root if api_root.startswith('/') else '/{}'.format(api_root)
+        api_root = api_root if api_root.endswith('/') else '{}/'.format(api_root)
+        api_server = api_server if not api_server.endswith('/') else api_server[:-1]
+        # Use cleaned up urls
+        self.api_server = api_server
+        self.api_root = api_root
         # Endpoint paths
         self.api_base = self.api_server + self.api_root
         self.api_shorten_endpoint = self.api_base + 'action/shorten'
