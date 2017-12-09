@@ -12,7 +12,7 @@ This project is set up to use pytest_ and tox_, and all tests are in the */tests
 .. note:: pytest is NOT compatible with Python 3.3.
 
 .. warning:: Using Anaconda and tox on Windows is likely to result in a "Error: InterpreterNotFound" message and fail.
-             If that is the case, see the `section below <fix_conda_tox_>`_ on how to make it work.
+             If that is the case, see :ref:`fix_conda_tox` on how to make it work.
 
 
 Test in one environment

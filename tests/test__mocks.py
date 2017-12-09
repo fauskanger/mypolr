@@ -3,6 +3,13 @@ import pytest
 import responses
 
 
+def test_pytest():
+    x = "this"
+    assert 'h' in x
+    with pytest.raises(ValueError):
+        raise ValueError('Pytest can test this')
+
+
 @responses.activate
 def test_responses_demo():
     responses.add(responses.GET, 'http://twitter.com/api/1/foobar',

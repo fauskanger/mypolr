@@ -5,7 +5,7 @@ User Guide
 
 Quick Example
 =============
-Here is an incomplete example. See `Advanced Usage`_ below for a more detailed description.
+Here is an incomplete example. See :ref:`advanced-example` below for a more detailed description.
 
 .. before-usage-example
 
@@ -99,7 +99,7 @@ Given a long url, the ``PolrApi.shorten()``-method produces a short url on the f
     except exceptions.BadApiResponse:
         print('Response from server was not valid JSON.')
 
-.. _`lookup() example`:
+.. _lookup_example:
 
 Lookup short URLs
 -----------------
@@ -174,7 +174,7 @@ The additional part, URL_KEY, is required as a parameter when doing lookup of se
 
 .. note:: The ``exceptions.UnauthorizedKeyError`` in the previous example is the sole catch
           in order to simplify the example about secret lookups,
-          but as seen in the `lookup() example`_ above,
+          but as seen in :ref:`lookup_example` above,
           this isn't the only exception that could be raised.
 
 Ignoring Errors

@@ -21,9 +21,22 @@ Exceptions
    :members:
    :undoc-members:
 
-Tests
-=====
+Testing
+=======
+
+Use tox with conda
+------------------
+
+See also: :ref:`fix_conda_tox`.
 
 .. automodule:: tox_with_conda
    :members:
    :undoc-members:
+
+ResponseErrorMap
+----------------
+
+Eases the burden of making repeated calls to the same url for testing when using ``pytest`` and ``responses``.
+
+.. automodule:: tests.test_mypolr
+   :members:
