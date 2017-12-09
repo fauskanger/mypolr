@@ -61,6 +61,7 @@ With `conda`:
 
 ToBeDone
 ========
+ - Add CLI support
  - Add ``:raises:`` docstring fields to methods/docs.
  - Implement the ``/data/link``-endpoint if necessary.
 
@@ -70,6 +71,7 @@ License
 This project is licensed under the `MIT Licence <https://github.com/fauskanger/mypolr/blob/master/LICENSE>`_.
 (See link for details.)
 
+.. personal_epilogue:
 
 Epilogue
 ========
