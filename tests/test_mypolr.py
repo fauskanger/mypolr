@@ -44,11 +44,11 @@ class ResponseErrorMap:
         rmap.add(dict(body=ValueError()), BadApiResponse)
 
 
-    *After* (and **only** after) mappings have been added, the ``make_endpoint_tests()`` can be called. E.g.:
+    *After* (and **only** after) mappings have been added, the ``make_error_tests()`` can be called. E.g.:
 
     .. code-block:: python
 
-        rmap.make_endpoint_tests(my_api.action, 'foo', 42, dict(user='Alice', pass='pass123'))
+        rmap.make_error_tests(my_api.action, 'foo', 42, dict(user='Alice', pass='pass123'))
 
     This will:
 
@@ -73,7 +73,8 @@ class ResponseErrorMap:
     :type common_kwargs: dict or None
     """
 
-    def __init__(self, response_args=None, errors=None, common_kwargs=None):
+    def __init__(self, endpoint, response_args=None, errors=None, common_kwargs=None):
+        self.endpoint = endpoint
         self.response_args = response_args or []
         self.errors = errors or []
         self.common_kwargs = common_kwargs or {}
@@ -82,18 +83,19 @@ class ResponseErrorMap:
         """
 
         :param response_kwargs: a dictionary of arguments to ``response.add()``
-        :type response_kwargs: list or None
+        :type response_kwargs: dict or None
         :param error: the error that pytest should expect with ``pytest.raises(error)``.
-        :type error: list or None
+        :type error: type(Exception)
         :return: None
         """
         self.response_args.append(response_kwargs)
         self.errors.append(error)
 
-    def make_endpoint_tests(self, f, *args, **kwargs):
+    @responses.activate
+    def make_error_tests(self, f, *args, **kwargs):
         for kws in self.response_args:
             kws.update(self.common_kwargs)
-            responses.add('GET', api.api_shorten_endpoint, **kws)
+            responses.add('GET', self.endpoint, **kws)
 
         for error in self.errors:
             with pytest.raises(error):
@@ -118,6 +120,10 @@ api = create_api()
 api_server = api.api_server
 api_root = api.api_root
 
+short_url = '{}/abcd'.format(api_server)
+shorten_resp = json_action('shorten', short_url)
+lookup_resp = json_action('lookup', dict(long_url=long_url))
+
 
 def test_endpoint_url_building():
     assert api.api_shorten_endpoint == api_server + '/api/v2/action/shorten'
@@ -126,48 +132,64 @@ def test_endpoint_url_building():
     assert api.api_link_data_endpoint == api_server + '/api/v2/data/link'
 
 
-@responses.activate
-def test_make_requests_success():
-    short_url = '{}/abcd'.format(api_server)
-    json_resp = json_action('shorten', short_url)
-    assert json_resp == dict(action='shorten', result=short_url)
-    responses.add('GET', api.api_shorten_endpoint, json=json_resp, status=200)
-    data, r = api._make_request(api.api_shorten_endpoint, dict(url=long_url))
-    assert r.status_code == 200
-    assert data == json_resp
+class TestMakeRequest:
+    @responses.activate
+    def test_success(self):
+        assert shorten_resp == dict(action='shorten', result=short_url)
+        responses.add('GET', api.api_shorten_endpoint, json=shorten_resp, status=200)
+        data, r = api._make_request(api.api_shorten_endpoint, dict(url=long_url))
+        assert r.status_code == 200
+        assert data == shorten_resp
 
+    def test_errors(self):
+        # Use dummy endpoint as _make_requests is sensitive
+        # to endpoints with regards to raising errors
+        endpoint = 'https://ti.ny/dummy/fails'
 
-@responses.activate
-def test_make_request_errors():
-    short_url = '{}/abcd'.format(api_server)
-    json_resp = json_action('shorten', short_url)
+        rmap = ResponseErrorMap(endpoint)
+        rmap.add(dict(status=401, json=shorten_resp), polr_errors.UnauthorizedKeyError)
+        rmap.add(dict(status=400, json=shorten_resp), polr_errors.BadApiRequest)
+        rmap.add(dict(status=500, json=shorten_resp), polr_errors.ServerOrConnectionError)
+        rmap.add(dict(body='this is not JSON'), polr_errors.BadApiResponse)
+        rmap.add(dict(body=ValueError()), polr_errors.BadApiResponse)
+        rmap.add(dict(body=requests.RequestException()), polr_errors.ServerOrConnectionError)
 
-    rmap = ResponseErrorMap()
-    rmap.add(dict(status=401, json=json_resp), polr_errors.UnauthorizedKeyError)
-    rmap.add(dict(status=400, json=json_resp), polr_errors.BadApiRequest)
-    rmap.add(dict(status=500, json=json_resp), polr_errors.ServerOrConnectionError)
-    rmap.add(dict(body=ValueError()), polr_errors.BadApiResponse)
-    rmap.add(dict(body=requests.RequestException()), polr_errors.ServerOrConnectionError)
-
-    rmap.make_endpoint_tests(api.shorten, short_url)
+        rmap.make_error_tests(api._make_request, endpoint, {})
 
 
 class TestShorten:
     @responses.activate
-    def test_shorten_success(self):
-        short_url = '{}/abcd'.format(api_server)
-        json_data = json_action('shorten', short_url)
-
-        responses.add('GET', api.api_shorten_endpoint, json=json_data, status=200)
+    def test_success(self):
+        responses.add('GET', api.api_shorten_endpoint, json=shorten_resp, status=200)
         assert api.shorten(long_url) == short_url
+        assert api.shorten(long_url, 'custom') == short_url
+        assert api.shorten(long_url, 'custom', True) == short_url
+        assert api.shorten(long_url, is_secret=True) == short_url
 
-    # @responses.activate
-    # def test_shorten_fails(self):
-    #     responses.add('GET', api.api_shorten_endpoint, body=, status=200)
-    #     responses.add('GET', api.api_shorten_endpoint, body=, status=200)
-    #
-    #     with pytest.raises(requests.ConnectionError):
-    #         api.shorten(long_url)
-    #     with pytest.raises(requests.ConnectionError):
-    #         api.shorten(long_url)
+    def test_errors(self):
+        rmap = ResponseErrorMap(api.api_shorten_endpoint)
+        rmap.add(dict(status=400, json=shorten_resp), polr_errors.BadApiRequest)
+        rmap.add(dict(status=403, json=shorten_resp), polr_errors.QuotaExceededError)
+        rmap.make_error_tests(api.shorten, long_url, custom_ending=None, is_secret=False)
 
+        rmap = ResponseErrorMap(api.api_shorten_endpoint)
+        rmap.add(dict(status=400, json=shorten_resp), polr_errors.CustomEndingUnavailable)
+        rmap.make_error_tests(api.shorten, long_url, custom_ending='someCustomEnding', is_secret=False)
+
+
+class TestLookup:
+    @responses.activate
+    def test_success(self):
+        responses.add('GET', api.api_lookup_endpoint, json=lookup_resp, status=200)
+        assert api.lookup(long_url).get('long_url') == long_url
+        assert api.lookup(long_url, 'a_secret').get('long_url') == long_url
+
+    @responses.activate
+    def test_not_found(self):
+        responses.add('GET', api.api_lookup_endpoint, json={}, status=404)
+        assert api.lookup(short_url) is False
+
+    def test_errors(self):
+        rmap = ResponseErrorMap(api.api_lookup_endpoint)
+        rmap.add(dict(status=401, json=lookup_resp), polr_errors.UnauthorizedKeyError)
+        rmap.make_error_tests(api.lookup, short_url, url_key='a_secret')
