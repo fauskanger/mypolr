@@ -61,7 +61,6 @@ With `conda`:
 
 ToBeDone
 ========
- - Add CLI support
  - Add ``:raises:`` docstring fields to methods/docs.
  - Implement the ``/data/link``-endpoint if necessary.
 
