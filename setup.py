@@ -18,7 +18,7 @@ long_description = 'Read documentation for more info on {}'.format(rtd)
 
 # Only include pytest-runner if invoked:
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
-pytest_runner = ['pytest-runner'] if needs_pytest else []
+pytest_runner = ['pytest-runner', 'pytest', 'responses'] if needs_pytest else []
 
 
 setup(
