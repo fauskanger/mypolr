@@ -4,7 +4,6 @@ channels:
 - defaults
 dependencies:
 - alabaster=0.7.10=py36_1
-- anaconda-client=1.6.5=py_0
 - asn1crypto=0.22.0=py36_0
 - babel=2.5.1=py36_0
 - ca-certificates=2017.11.5=0
@@ -61,10 +60,12 @@ dependencies:
 - yaml=0.1.7=vc14_0
 - pip:
   - attrs==17.3.0
+  - commonmark==0.7.4
   - cookies==2.2.1
+  - future==0.16.0
   - ipython-genutils==0.2.0
   - jupyter-core==4.4.0
-  - mypolr
+  - mypolr (e:\dev\mypolr)==1.2.4.dev0+g94dcae6.d20171209
   - pluggy==0.6.0
   - prompt-toolkit==1.0.15
   - py==1.5.2
@@ -72,9 +73,10 @@ dependencies:
   - responses==0.8.1
   - restructuredtext-lint==1.1.2
   - setuptools-scm==1.15.6
+  - sphinx-argparse==0.2.1
   - sphinx-rtd-theme==0.2.4
   - tox==2.9.1
-  - tox-with-conda (e:\dev\tox_with_conda)==1.0.3
+  - tox-with-conda (e:\dev\tox_with_conda)==1.0.4
   - win-inet-pton==1.0.1
 prefix: E:\Anaconda3\envs\benv
 
