@@ -47,7 +47,7 @@ There is only one requirement:
 
 When installing with `pip` or `conda` this will be installed automatically (if not already installed).
 
-Tested on Python 3.6, but should work with version 3.3 and newer.
+Tested on Python 2.7, 3.4+, but should work with version 3.3 and newer.
 
 
 Installation
