@@ -8,7 +8,7 @@ This section is generated with the Sphinx
 PolrApi
 =======
 
-.. automodule:: mypolr
+.. automodule:: mypolr.polr_api
    :members:
    :undoc-members:
 
