@@ -1,4 +1,3 @@
-import requests
 from functools import wraps
 
 
@@ -47,8 +46,7 @@ class BadApiRequest(MypolrError):
 
 class BadApiResponse(MypolrError):
     """Raised when a response is malformed and cannot be interpreted as valid JSON."""
-    def __init__(self):
-        msg = 'Cannot interpret API response: invalid JSON.'
+    def __init__(self, msg='Cannot interpret API response: invalid JSON.'):
         super(BadApiResponse, self).__init__(msg)
 
 
@@ -75,6 +73,8 @@ class QuotaExceededError(MypolrError):
 
 class ServerOrConnectionError(MypolrError):
     """Raised when there is a timeout, internal server error, or any other connection error."""
-    def __init__(self):
+    def __init__(self, caused=None):
         msg = 'API cannot be reached. Check connection or server status.'
+        if caused is not None:
+            msg = '{} ({})'.format(msg, caused)
         super(ServerOrConnectionError, self).__init__(msg)
