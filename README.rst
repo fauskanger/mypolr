@@ -1,3 +1,12 @@
+Travis CI build and test status:
+
+.. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master
+   :align: center
+   :alt: Travis CI build and test status
+   :target: https://travis-ci.org/fauskanger/mypolr
+
+.. after-travis-ci-image
+
 ********
 Overview
 ********
@@ -16,12 +25,6 @@ GitHub:
 
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
-
-Travis CI build and test status:
-    .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master
-       :align: center
-       :alt: Travis CI build and test status
-       :target: https://travis-ci.org/fauskanger/mypolr
 
 .. after-introduction-links
 
