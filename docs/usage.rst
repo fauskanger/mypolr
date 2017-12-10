@@ -207,3 +207,13 @@ The ``PolrApi.lookup_no_raise()``-method still returns ``False`` when no url is 
           **ONLY** errors derived from ``mypolr.exception.MypolrError`` will instead return ``None``.
 
 .. after-advanced-example
+
+CLI usage
+=========
+
+CLI-support was added in version 1.2.4.
+
+.. argparse::
+   :module: mypolr.__main__
+   :func: make_argparser
+   :prog: mypolr
