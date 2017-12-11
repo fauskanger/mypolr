@@ -6,7 +6,9 @@ from setuptools import setup
 # from codecs import open
 # from os import path
 
-short_description = 'Simple Python package for using the Polr Project REST API.'
+short_description = "Package to easily create and manage short links using the " \
+                    "`Polr Project <https://polrproject.org>`_'s REST " \
+                    "`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_ that also has CLI support."
 
 # here = path.abspath(path.dirname(__file__))
 # with open(path.join(here, 'README.rst'), encoding='utf-8') as f:

@@ -23,9 +23,9 @@ Overview
 .. _docs: https://mypolr.readthedocs.io
 .. _travis_ci: https://travis-ci.org/fauskanger/mypolr
 
-This package, `mypolr`, is a simple python package for creating short links using the
+This package, `mypolr`, is a python package to easily create and manage short links using the
 `Polr Project <https://polrproject.org>`_'s REST
-`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_.
+`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_ that also has CLI support.
 
 User Guide and documentation:
     https://mypolr.readthedocs.io
