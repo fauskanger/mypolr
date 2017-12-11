@@ -2,19 +2,19 @@
 Overview
 ********
 
-Travis CI build and test status:
++--------------------+--------------------------------------------------------------------------+
+| Travis CI build    | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master |
+| and test status:   |    :align: center                                                        |
+|                    |    :alt: Travis CI build and test status                                 |
+|                    |    :target: https://travis-ci.org/fauskanger/mypolr                      |
++--------------------+--------------------------------------------------------------------------+
+| ReadTheDocs.io     | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
+| documentation      |    :align: center                                                        |
+| build status:      |    :alt: ReadTheDocs.io build status                                     |
+|                    |    :target: https://travis-ci.org/fauskanger/mypolr                      |
++--------------------+--------------------------------------------------------------------------+
 
-.. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master
-   :align: center
-   :alt: Travis CI build and test status
-   :target: https://travis-ci.org/fauskanger/mypolr
 
-ReadTheDocs.io documentation build status:
-
-.. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest
-   :align: center
-   :alt: ReadTheDocs.io build status
-   :target: https://travis-ci.org/fauskanger/mypolr
 
 .. after-travis-ci-image
 
