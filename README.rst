@@ -1,3 +1,7 @@
+********
+Overview
+********
+
 Travis CI build and test status:
 
 .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master
@@ -6,10 +10,6 @@ Travis CI build and test status:
    :target: https://travis-ci.org/fauskanger/mypolr
 
 .. after-travis-ci-image
-
-********
-Overview
-********
 
 .. before-introduction-links
 
@@ -70,8 +70,8 @@ With `conda`:
 
 ToBeDone
 ========
- - Add ``:raises:`` docstring fields to methods/docs.
- - Implement the ``/data/link``-endpoint if necessary.
+- Add ``:raises:`` docstring fields to methods/docs.
+- Implement the ``/data/link``-endpoint if necessary.
 
 
 License

@@ -74,7 +74,7 @@ This is how the API would be set up given the aforementioned (and arbitrary) ass
 Shorten long URLs
 -----------------
 
-Given a long url, the ``PolrApi.shorten()``-method produces a short url on the form ``https://ti.ny / URL_ENDING``:
+Given a long url, the :any:`PolrApi.shorten`-method produces a short url on the form ``https://ti.ny / URL_ENDING``:
 
 .. code-block:: python
 
@@ -103,7 +103,7 @@ Given a long url, the ``PolrApi.shorten()``-method produces a short url on the f
 
 Lookup short URLs
 -----------------
-The ``PolrApi.lookup()``-method accepts either a short url ending, or a full short url, and returns ``False`` if no
+The :any:`PolrApi.lookup`-method accepts either a short url ending, or a full short url, and returns ``False`` if no
 url is found, or returns a dictionary of info about the link.
 
 .. code-block:: python
@@ -179,12 +179,12 @@ The additional part, URL_KEY, is required as a parameter when doing lookup of se
 
 Ignoring Errors
 ---------------
-The ``mypolr.exceptions.no_raise_(f)`` decorator has been applied to both
-``PolrApi.shorten_no_raise()`` and ``PolrApi.lookup_no_raise()``,
+The :any:`exceptions.no_raise`-decorator has been applied to both
+:any:`PolrApi.shorten_no_raise` and :any:`PolrApi.lookup_no_raise`,
 and will act as their corresponding normal methods,
 but will return ``None`` instead of raising **module** exceptions upon errors.
 
-The ``PolrApi.lookup_no_raise()``-method still returns ``False`` when no url is found (if no error occurs).
+The :any:`PolrApi.lookup_no_raise`-method still returns ``False`` when no url is found (if no error occurs).
 
 .. code-block:: python
 
@@ -204,14 +204,49 @@ The ``PolrApi.lookup_no_raise()``-method still returns ``False`` when no url is 
              there is no feedback of what went wrong upon failure.
 
 .. note:: The `\*_no_raise`-methods will still raise *other* exceptions, and
-          **ONLY** errors derived from ``mypolr.exception.MypolrError`` will instead return ``None``.
+          **ONLY** errors derived from :any:`MypolrError` will instead return ``None``.
 
 .. after-advanced-example
 
 CLI usage
 =========
 
-CLI-support was added in version 1.2.4.
+CLI-support was added in version 1.3.
+
+Examples
+--------
+
+Assuming Polr Project is intalled on *https://ti.ny* and that your API_KEY is *abcdef1234567890*,
+below is a few examples. Read full description of the interface further down.
+
+Basic example, performs the default :any:`PolrApi.shorten` action.
+
+.. code-block:: none
+
+   python -m mypolr http://some.long.example.com --server https://ti.ny --key abcdef1234567890
+
+Set ``-l``/``--lookup`` option to perform :any:`PolrApi.lookup` action.
+
+.. code-block:: none
+
+   python -m mypolr https://ti.ny/5Bn8V --lookup
+
+In the previous example, no server configuration values were used.
+They, including the key, can be saved **in plaintext** to *~/.mypolr/config.ini* with the ``--save`` option.
+This will load the saved values if not presented upon invocation.
+
+.. code-block:: none
+
+   python -m mypolr --server https://ti.ny --key abcdef1234567890 --save
+
+Clear the *config.ini*-file with the ``--clear`` option.
+
+.. code-block:: none
+
+   python -m mypolr --clear
+
+CLI description
+---------------
 
 .. argparse::
    :module: mypolr.__main__

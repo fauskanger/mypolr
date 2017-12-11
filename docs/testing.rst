@@ -7,6 +7,9 @@ Testing
 .. _tox_conda: https://fizzylogic.nl/2017/11/01/how-to-setup-tox-on-windows-with-anaconda/
 .. _symlink: https://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/
 
+Pytest and tox
+==============
+
 This project is set up to use pytest_ and tox_, and all tests are in the */tests*-folder.
 
 .. note:: pytest is NOT compatible with Python 3.3.
@@ -16,7 +19,7 @@ This project is set up to use pytest_ and tox_, and all tests are in the */tests
 
 
 Test in one environment
-=======================
+-----------------------
 
 To run tests for the current Python environment, simply invoke pytest_ in project root,
 or pass ``test`` as an option argument to ``setup.py``.
@@ -33,7 +36,7 @@ Examples:
 
 
 Multiple versions
-=================
+-----------------
 
 Tests can be run for multiple python versions in separate *virtualenv*\ s using tox_.
 Its setup is defined in the *tox.ini*, and will run tests in separate environments for:
@@ -46,7 +49,7 @@ Its setup is defined in the *tox.ini*, and will run tests in separate environmen
 These need to be created first using ``virtualenv`` or ``conda``. (Keep reading.)
 
 All versions
-------------
+''''''''''''
 
 To run tests in all the Python environments, simply invoke tox_ in project root
 (after the Python environments are created).
@@ -58,7 +61,7 @@ Example:
     C:\dev\mypolr> tox
 
 Specific versions
------------------
+'''''''''''''''''
 
 To run on only a subset (or a single one) of the configured environments, you can use the ``-e ENV[,ENV,...]`` option.
 
@@ -73,7 +76,7 @@ Read more about how to `integrate tox and pytest <tox_pytest_>`_.
 .. _fix_conda_tox:
 
 Working with Windows, conda, tox
-================================
+--------------------------------
 
 .. note::
 
@@ -118,7 +121,7 @@ Tips 3:
     the ``--prefix`` option.
 
 Fast and easy fix
------------------
+'''''''''''''''''
 
 The *tests/tox_with_conda.py*-file is a utility for making the steps above with a single call.
 
@@ -163,14 +166,34 @@ the ``-b``/``--base`` option to override the default base location (``C:\Python`
 
               pip install tox_with_conda
 
-          If installed with pip, then instead of
+If installed with pip, then instead of
 
-          .. code-block:: none
+.. code-block:: none
 
-              python tox_with_conda.py ...
+   python tox_with_conda.py ...
 
-          use
+use
 
-          .. code-block:: none
+.. code-block:: none
 
-              python -m tox_with_conda ...
+   python -m tox_with_conda ...
+
+Travis CI
+=========
+
+Current build and test status:
+   .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master
+      :align: center
+      :alt: Travis CI build and test status
+      :target: https://travis-ci.org/fauskanger/mypolr
+
+.. _travis_python: https://docs.travis-ci.com/user/languages/python/
+.. _travis_mypolr: https://travis-ci.org/fauskanger/mypolr
+
+The *.travis.yml*-file defines the `Travis CI setup <travis_python_>`_ for this project.
+When new code has been pushed to the git repository, Travis CI will automatically pull the updates.
+Then it will build and run tests for multiple versions of Python.
+The process can be `monitored here <travis_mypolr_>`_.
+
+.. warning:: Travis continuous integration is not a replacement for running tests locally before committing changes
+             or making pull requests.
