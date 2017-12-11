@@ -11,7 +11,7 @@ Overview
 | `ReadTheDocs.io <docs_>`_       | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
 | documentation                   |    :align: center                                                        |
 | build status:                   |    :alt: ReadTheDocs.io build status                                     |
-|                                 |    :target: http://mypolr.readthedocs.io/en/latest                       |
+|                                 |    :target: https://mypolr.readthedocs.io/en/latest                      |
 +---------------------------------+--------------------------------------------------------------------------+
 
 
