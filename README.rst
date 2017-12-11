@@ -2,23 +2,26 @@
 Overview
 ********
 
-+--------------------+--------------------------------------------------------------------------+
-| Travis CI build    | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master |
-| and test status:   |    :align: center                                                        |
-|                    |    :alt: Travis CI build and test status                                 |
-|                    |    :target: https://travis-ci.org/fauskanger/mypolr                      |
-+--------------------+--------------------------------------------------------------------------+
-| ReadTheDocs.io     | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
-| documentation      |    :align: center                                                        |
-| build status:      |    :alt: ReadTheDocs.io build status                                     |
-|                    |    :target: https://travis-ci.org/fauskanger/mypolr                      |
-+--------------------+--------------------------------------------------------------------------+
++--------------------------------+--------------------------------------------------------------------------+
+| `Travis CI <travis_ci_>` build | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master |
+| and test status:               |    :align: center                                                        |
+|                                |    :alt: Travis CI build and test status                                 |
+|                                |    :target: https://travis-ci.org/fauskanger/mypolr                      |
++--------------------------------+--------------------------------------------------------------------------+
+| `ReadTheDocs.io <docs_>`_      | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
+| documentation                  |    :align: center                                                        |
+| build status:                  |    :alt: ReadTheDocs.io build status                                     |
+|                                |    :target: http://mypolr.readthedocs.io/en/latest                       |
++--------------------------------+--------------------------------------------------------------------------+
 
 
 
 .. after-travis-ci-image
 
 .. before-introduction-links
+
+.. _docs: https://mypolr.readthedocs.io
+.. _travis_ci: https://travis-ci.org/fauskanger/mypolr
 
 This package, `mypolr`, is a simple python package for creating short links using the
 `Polr Project <https://polrproject.org>`_'s REST
