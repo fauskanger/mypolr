@@ -6,8 +6,6 @@ import stat
 
 from mypolr import __version__, exceptions, PolrApi, DEFAULT_API_ROOT
 
-ini_header = 'connection'
-
 
 def make_argparser():
     # Set up arguments
@@ -50,80 +48,97 @@ def make_argparser():
     return parser
 
 
-def make_ini_getter(config):
-    def get_ini_value(field, fallback=None):
-        return config.get(ini_header, field, fallback=fallback)
-    return get_ini_value
+class MypolrCli:
+    def __init__(self):
+        # define config.ini
+        self.ini_header = 'connection'
+        self.config_folder = Path().home() / '.mypolr'
+        self.config_file = self.config_folder / 'config.ini'
+        # Parse args
+        self.args = args = make_argparser().parse_args()
+        # Common vars
+        self.api_server = args.server
+        self.api_root = args.api_root
+        self.api_key = args.key
+        self.url = args.url
 
+    def run(self):
+        if self.args.version:
+            print('Version: {}'.format(__version__))
+            return
 
-def run():
-    # config.ini
-    config_folder = Path().home() / '.mypolr'
-    config_file = config_folder / 'config.ini'
+        if self.args.save:
+            self.save_ini()
+        if self.args.clear:
+            self.clear_ini()
+        self.load_configs_from_ini()
+        self.call_api()
 
-    # Parse arguments
-    args = make_argparser().parse_args()
+    def make_ini_getter(self):
+        config = ConfigParser()
+        config.read(self.config_file)
 
-    api_server = args.server
-    api_root = args.api_root
-    api_key = args.key
-    url = args.url
+        def get_ini_value(field, fallback=None):
+            return config.get(self.ini_header, field, fallback=fallback)
+        return get_ini_value
 
-    if args.version:
-        print('Version: {}'.format(__version__))
-        return
-
-    if args.save:
-        if any(value is None for value in [api_server, api_key]):
+    def save_ini(self):
+        if any(value is None for value in [self.api_server, self.api_key]):
             print('\nDid not save: Provide at least both SERVER and KEY.\n')
         else:
             # Save api connection values to config file
-            config_folder.mkdir(exist_ok=True)
-            config_file.touch(stat.S_IRWXU)
+            self.config_folder.mkdir(exist_ok=True)
+            self.config_file.touch(stat.S_IRWXU)
             config = ConfigParser()
-            config[ini_header] = dict(api_server=api_server, api_key=api_key, api_root=api_root)
-            with config_file.open('w') as f:
+            config[self.ini_header] = dict(api_server=self.api_server, api_key=self.api_key, api_root=self.api_root)
+            with self.config_file.open('w') as f:
                 config.write(f)
-                print('Config file saved: {}'.format(config_file))
+                print('Config file saved: {}'.format(self.config_file))
 
-    if args.clear:
-        if config_file.exists():
+    def clear_ini(self):
+        if self.config_file.exists():
             config = ConfigParser()
-            config[ini_header] = dict()
-            with config_file.open('w') as f:
+            config[self.ini_header] = dict()
+            with self.config_file.open('w') as f:
                 config.write(f)
-                print('Config file cleared: {}'.format(config_file))
+                print('Config file cleared: {}'.format(self.config_file))
+        else:
+            print('\nDid not clear: configuration file does not exists.')
 
-    if config_file.exists():
-        config = ConfigParser()
-        config.read(config_file)
-        ini_value = make_ini_getter(config)
-        api_server = api_server or ini_value('api_server')
-        api_root = api_root or ini_value('api_root')
-        api_key = api_key or ini_value('api_key')
+    def load_configs_from_ini(self):
+        if self.config_file.exists():
+            ini_value = self.make_ini_getter()
+            self.api_server = self.api_server or ini_value('api_server')
+            self.api_root = self.api_root or ini_value('api_root')
+            self.api_key = self.api_key or ini_value('api_key')
 
-    required_for_api_action = dict(server=api_server, key=api_key, url=url)
-    if any(arg is None for arg in required_for_api_action.values()):
-        if not any([args.save, args.clear]):
-            missing_args = ', '.join(key.upper() for key, value in required_for_api_action.items() if value is None)
-            print('Incomplete arguments for API action. Missing: {}'.format(missing_args))
-    else:
-        print('Processing {}\n'.format(url))
+    def call_api_action(self):
+        print('Processing {}\n'.format(self.url))
         try:
-            api = PolrApi(api_server, api_key, api_root)
-            if args.lookup:
-                if args.secret:
-                    url, url_key = url.rsplit('/', maxsplit=1)
-                else:
-                    url_key = None
+            api = PolrApi(self.api_server, self.api_key, self.api_root)
+            if self.args.lookup:
+                url, url_key = self.url.rsplit('/', maxsplit=1) if self.args.secret else (self.url, None)
                 result = api.lookup(url, url_key)
                 print("Lookup result:\n")
                 pprint(result)
             else:
-                print('Short url: {}'.format(api.shorten(url, custom_ending=args.custom, is_secret=args.secret)))
+                print('Short url: {}'.format(api.shorten(
+                    self.url,
+                    custom_ending=self.args.custom,
+                    is_secret=self.args.secret)
+                ))
         except exceptions.MypolrError as e:
             print(e)
 
+    def call_api(self):
+        required_for_api_action = dict(server=self.api_server, key=self.api_key, url=self.url)
+        if any(arg is None for arg in required_for_api_action.values()):
+            if not any([self.args.save, self.args.clear]):
+                missing_args = ', '.join(key.upper() for key, value in required_for_api_action.items() if value is None)
+                print('Incomplete arguments for API action. Missing: {}'.format(missing_args))
+        else:
+            self.call_api_action()
+
 
 if __name__ == '__main__':
-    run()
+    MypolrCli().run()
