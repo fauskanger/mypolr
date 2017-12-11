@@ -2,17 +2,17 @@
 Overview
 ********
 
-+--------------------------------+--------------------------------------------------------------------------+
-| `Travis CI <travis_ci_>` build | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master |
-| and test status:               |    :align: center                                                        |
-|                                |    :alt: Travis CI build and test status                                 |
-|                                |    :target: https://travis-ci.org/fauskanger/mypolr                      |
-+--------------------------------+--------------------------------------------------------------------------+
-| `ReadTheDocs.io <docs_>`_      | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
-| documentation                  |    :align: center                                                        |
-| build status:                  |    :alt: ReadTheDocs.io build status                                     |
-|                                |    :target: http://mypolr.readthedocs.io/en/latest                       |
-+--------------------------------+--------------------------------------------------------------------------+
++---------------------------------+--------------------------------------------------------------------------+
+| `Travis CI <travis_ci_>`_ build | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master |
+| and test status:                |    :align: center                                                        |
+|                                 |    :alt: Travis CI build and test status                                 |
+|                                 |    :target: https://travis-ci.org/fauskanger/mypolr                      |
++---------------------------------+--------------------------------------------------------------------------+
+| `ReadTheDocs.io <docs_>`_       | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
+| documentation                   |    :align: center                                                        |
+| build status:                   |    :alt: ReadTheDocs.io build status                                     |
+|                                 |    :target: http://mypolr.readthedocs.io/en/latest                       |
++---------------------------------+--------------------------------------------------------------------------+
 
 
 
