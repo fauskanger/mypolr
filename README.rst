@@ -9,6 +9,13 @@ Travis CI build and test status:
    :alt: Travis CI build and test status
    :target: https://travis-ci.org/fauskanger/mypolr
 
+ReadTheDocs.io documentation build status:
+
+.. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest
+   :align: center
+   :alt: ReadTheDocs.io build status
+   :target: https://travis-ci.org/fauskanger/mypolr
+
 .. after-travis-ci-image
 
 .. before-introduction-links
@@ -56,7 +63,7 @@ There is only one requirement:
 
 When installing with `pip` or `conda` this will be installed automatically (if not already installed).
 
-Tested on Python 2.7, 3.4+, but should work with version 3.3 and newer.
+Tested on Python 2.7, 3.4+, but should also work with version 3.3.
 
 
 Installation
