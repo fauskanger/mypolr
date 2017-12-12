@@ -7,6 +7,7 @@ Sphinx==1.6.5
 pytest==3.3.1
 six==1.11.0
 sphinx_rtd_theme==0.2.4
+sphinx-argparse
 setuptools==38.2.4
 virtualenv==15.1.0
 docutils==0.14
