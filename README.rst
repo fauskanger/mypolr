@@ -2,26 +2,15 @@
 Overview
 ********
 
-+---------------------------------+--------------------------------------------------------------------------+
-| `Travis CI <travis_ci_>`_ build | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master |
-| and test status:                |    :align: center                                                        |
-|                                 |    :alt: Travis CI build and test status                                 |
-|                                 |    :target: https://travis-ci.org/fauskanger/mypolr                      |
-+---------------------------------+--------------------------------------------------------------------------+
-| `ReadTheDocs.io <docs_>`_       | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest |
-| documentation                   |    :align: center                                                        |
-| build status:                   |    :alt: ReadTheDocs.io build status                                     |
-|                                 |    :target: https://mypolr.readthedocs.io/en/latest                      |
-+---------------------------------+--------------------------------------------------------------------------+
-
-
-
 .. after-travis-ci-image
-
 .. before-introduction-links
 
 .. _docs: https://mypolr.readthedocs.io
 .. _travis_ci: https://travis-ci.org/fauskanger/mypolr
+.. _pypi: https://pypi.org/project/mypolr/
+.. _pypi_old: pypi_
+.. _pypi_legacy: https://pypi.python.org/pypi/mypolr
+.. _conda: https://anaconda.org/fauskanger/mypolr
 
 This package, `mypolr`, is a python package to easily create and manage short links using the
 `Polr Project <https://polrproject.org>`_'s REST
@@ -36,7 +25,85 @@ GitHub:
 Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
+PyPI:
+    ``pip install mypolr`` [ `PyPI.org <pypi_>`_ | `Legacy <pypi_old_>`_ ]
+
 .. after-introduction-links
+
+-----
+
++--------------+------------------------------------------------------------------------------------------------------+
+|  Project     | .. image:: https://img.shields.io/pypi/pyversions/mypolr.svg                                         |
+|              |    :align: left                                                                                      |
+|              |    :alt: Python versions supported                                                                   |
+|              |    :target: pypi_old_                                                                                |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/github/license/fauskanger/mypolr.svg                               |
+|              |    :align: left                                                                                      |
+|              |    :alt: LICENCE                                                                                     |
+|              |    :target: https://github.com/fauskanger/mypolr/blob/master/LICENSE                                 |
+|              +------------------------------------------------------------------------------------------------------+
+|              | .. image:: https://img.shields.io/github/tag/fauskanger/mypolr.svg                                   |
+|              |    :align: left                                                                                      |
+|              |    :alt: Latest git tag                                                                              |
+|              |    :target: https://github.com/fauskanger/mypolr/tags                                                |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/pypi/v/mypolr.svg                                                  |
+|              |    :align: left                                                                                      |
+|              |    :alt: PyPI version                                                                                |
+|              |    :target: pypi_old_                                                                                |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/conda/v/fauskanger/mypolr.svg                                      |
+|              |    :align: left                                                                                      |
+|              |    :alt: conda version                                                                               |
+|              |    :target: conda_                                                                                   |
++--------------+------------------------------------------------------------------------------------------------------+
+| Git          | .. image:: https://img.shields.io/github/last-commit/fauskanger/mypolr.svg                           |
+|              |    :align: left                                                                                      |
+|              |    :alt: Last commit                                                                                 |
+|              |    :target: https://github.com/fauskanger/mypolr/commits                                             |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/github/issues/fauskanger/mypolr.svg                                |
+|              |    :align: left                                                                                      |
+|              |    :alt: Open issues                                                                                 |
+|              |    :target: https://github.com/fauskanger/mypolr/issues                                              |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/github/issues-closed/fauskanger/mypolr.svg                         |
+|              |    :align: left                                                                                      |
+|              |    :alt: Close issues                                                                                |
+|              |    :target: https://github.com/fauskanger/mypolr/issues                                              |
+|              +------------------------------------------------------------------------------------------------------+
+|              | .. image:: https://img.shields.io/github/languages/code-size/fauskanger/mypolr.svg                   |
+|              |    :align: left                                                                                      |
+|              |    :alt: Repo size                                                                                   |
+|              |    :target: https://github.com/fauskanger/mypolr                                                     |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/github/repo-size/fauskanger/mypolr.svg                             |
+|              |    :align: left                                                                                      |
+|              |    :alt: Repo size                                                                                   |
+|              |    :target: https://github.com/fauskanger/mypolr                                                     |
++--------------+------------------------------------------------------------------------------------------------------+
+| Statuses     | .. image:: https://img.shields.io/pypi/status/mypolr.svg                                             |
+|              |    :align: left                                                                                      |
+|              |    :alt: Status                                                                                      |
+|              |    :target: pypi_old_                                                                                |
+|              |                                                                                                      |
+|              | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest                             |
+|              |    :align: left                                                                                      |
+|              |    :alt: ReadTheDocs.io build status                                                                 |
+|              |    :target: https://mypolr.readthedocs.io/en/latest                                                  |
+|              |                                                                                                      |
+|              | .. image:: https://api.travis-ci.org/fauskanger/mypolr.svg?branch=master                             |
+|              |    :align: left                                                                                      |
+|              |    :alt: Travis CI build and test status                                                             |
+|              |    :target: https://travis-ci.org/fauskanger/mypolr                                                  |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/pypi/wheel/mypolr.svg                                              |
+|              |    :align: left                                                                                      |
+|              |    :alt: Wheel support                                                                               |
+|              |    :target: pypi_old_                                                                                |
++--------------+------------------------------------------------------------------------------------------------------+
+
 
 Requirements
 ============
