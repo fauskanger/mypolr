@@ -36,7 +36,7 @@ PyPI:
 |  Project     | .. image:: https://img.shields.io/pypi/pyversions/mypolr.svg                                         |
 |              |    :align: left                                                                                      |
 |              |    :alt: Python versions supported                                                                   |
-|              |    :target: pypi_                                                                                |
+|              |    :target: pypi_                                                                                    |
 |              |                                                                                                      |
 |              | .. image:: https://img.shields.io/github/license/fauskanger/mypolr.svg                               |
 |              |    :align: left                                                                                      |
@@ -51,7 +51,7 @@ PyPI:
 |              | .. image:: https://img.shields.io/pypi/v/mypolr.svg                                                  |
 |              |    :align: left                                                                                      |
 |              |    :alt: PyPI version                                                                                |
-|              |    :target: pypi_                                                                                |
+|              |    :target: pypi_                                                                                    |
 |              |                                                                                                      |
 |              | .. image:: https://img.shields.io/conda/v/fauskanger/mypolr.svg                                      |
 |              |    :align: left                                                                                      |
@@ -86,7 +86,7 @@ PyPI:
 | Statuses     | .. image:: https://img.shields.io/pypi/status/mypolr.svg                                             |
 |              |    :align: left                                                                                      |
 |              |    :alt: Status                                                                                      |
-|              |    :target: pypi_                                                                                |
+|              |    :target: pypi_                                                                                    |
 |              |                                                                                                      |
 |              | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest                             |
 |              |    :align: left                                                                                      |
@@ -101,7 +101,7 @@ PyPI:
 |              | .. image:: https://img.shields.io/pypi/wheel/mypolr.svg                                              |
 |              |    :align: left                                                                                      |
 |              |    :alt: Wheel support                                                                               |
-|              |    :target: pypi_                                                                                |
+|              |    :target: pypi_                                                                                    |
 +--------------+------------------------------------------------------------------------------------------------------+
 
 
