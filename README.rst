@@ -98,4 +98,5 @@ This project has served several purposes:
 #. To easily utilize the Polr Project API with Python.
 #. Be an exercise in packaging and distributing Python modules (with `pip` and `conda`).
 #. Be an exercise in reStructuredText, Sphinx documentation, and ReadTheDocs.
+#. Be an exercise in testing Python along best practices and conventions.
 
