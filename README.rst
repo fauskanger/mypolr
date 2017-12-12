@@ -7,9 +7,9 @@ Overview
 
 .. _docs: https://mypolr.readthedocs.io
 .. _travis_ci: https://travis-ci.org/fauskanger/mypolr
-.. _pypi: https://pypi.org/project/mypolr/
-.. _pypi_old: pypi_
+.. _pypi_new: https://pypi.org/project/mypolr/
 .. _pypi_legacy: https://pypi.python.org/pypi/mypolr
+.. _pypi: pypi_new_
 .. _conda: https://anaconda.org/fauskanger/mypolr
 
 This package, `mypolr`, is a python package to easily create and manage short links using the
@@ -26,7 +26,7 @@ Clone source:
     ``git clone git://github.com/fauskanger/mypolr.git``
 
 PyPI:
-    ``pip install mypolr`` [ `PyPI.org <pypi_>`_ | `Legacy <pypi_old_>`_ ]
+    ``pip install mypolr`` [ `PyPI.org <pypi_new_>`_ | `Legacy <pypi_legacy_>`_ ]
 
 .. after-introduction-links
 
@@ -36,7 +36,7 @@ PyPI:
 |  Project     | .. image:: https://img.shields.io/pypi/pyversions/mypolr.svg                                         |
 |              |    :align: left                                                                                      |
 |              |    :alt: Python versions supported                                                                   |
-|              |    :target: pypi_old_                                                                                |
+|              |    :target: pypi_                                                                                |
 |              |                                                                                                      |
 |              | .. image:: https://img.shields.io/github/license/fauskanger/mypolr.svg                               |
 |              |    :align: left                                                                                      |
@@ -51,7 +51,7 @@ PyPI:
 |              | .. image:: https://img.shields.io/pypi/v/mypolr.svg                                                  |
 |              |    :align: left                                                                                      |
 |              |    :alt: PyPI version                                                                                |
-|              |    :target: pypi_old_                                                                                |
+|              |    :target: pypi_                                                                                |
 |              |                                                                                                      |
 |              | .. image:: https://img.shields.io/conda/v/fauskanger/mypolr.svg                                      |
 |              |    :align: left                                                                                      |
@@ -86,7 +86,7 @@ PyPI:
 | Statuses     | .. image:: https://img.shields.io/pypi/status/mypolr.svg                                             |
 |              |    :align: left                                                                                      |
 |              |    :alt: Status                                                                                      |
-|              |    :target: pypi_old_                                                                                |
+|              |    :target: pypi_                                                                                |
 |              |                                                                                                      |
 |              | .. image:: https://readthedocs.org/projects/mypolr/badge/?version=latest                             |
 |              |    :align: left                                                                                      |
@@ -101,7 +101,7 @@ PyPI:
 |              | .. image:: https://img.shields.io/pypi/wheel/mypolr.svg                                              |
 |              |    :align: left                                                                                      |
 |              |    :alt: Wheel support                                                                               |
-|              |    :target: pypi_old_                                                                                |
+|              |    :target: pypi_                                                                                |
 +--------------+------------------------------------------------------------------------------------------------------+
 
 
