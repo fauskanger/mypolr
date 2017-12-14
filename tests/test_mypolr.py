@@ -2,7 +2,8 @@ import requests
 import responses
 import pytest
 
-from mypolr import PolrApi, exceptions as polr_errors
+from mypolr import PolrApi, DEFAULT_API_ROOT, exceptions as polr_errors
+from mypolr.__main__ import get_args as _get_args
 
 
 class ResponseErrorMap:
@@ -193,3 +194,30 @@ class TestLookup:
         rmap = ResponseErrorMap(api.api_lookup_endpoint)
         rmap.add(dict(status=401, json=lookup_resp), polr_errors.UnauthorizedKeyError)
         rmap.make_error_tests(api.lookup, short_url, url_key='a_secret')
+
+
+def to_args(s):
+    return _get_args(s.split())
+
+
+class TestCliArgs:
+    def test_parser(self):
+        none_kws = 'url server key custom'.split()
+        bool_kws = 'version secret lookup save clear'.split()
+        flags_true = ['--{}'.format(kw) for kw in bool_kws]
+
+        args = _get_args([])
+        assert args.api_root == DEFAULT_API_ROOT
+
+        for kw in bool_kws:
+            assert kw in args
+            assert getattr(args, kw) is False
+
+        for kw in none_kws:
+            assert kw in args
+            assert getattr(args, kw) is None
+
+        args = _get_args(flags_true)
+        for kw in bool_kws:
+            assert kw in args
+            assert getattr(args, kw) is True
