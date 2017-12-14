@@ -14,7 +14,7 @@ Overview
 
 This package, `mypolr`, is a python package to easily create and manage short links using the
 `Polr Project <https://polrproject.org>`_'s REST
-`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_ that also has CLI support.
+`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_. Mypolr also has CLI support.
 
 User Guide and documentation:
     https://mypolr.readthedocs.io
@@ -57,6 +57,11 @@ PyPI:
 |              |    :align: left                                                                                      |
 |              |    :alt: conda version                                                                               |
 |              |    :target: conda_                                                                                   |
+|              |                                                                                                      |
+|              | .. image:: https://img.shields.io/badge/Semantic_Versioning-Yes-blue.svg                             |
+|              |    :align: left                                                                                      |
+|              |    :alt: Version Scheme                                                                              |
+|              |    :target: https://semver.org                                                                       |
 +--------------+------------------------------------------------------------------------------------------------------+
 | Git          | .. image:: https://img.shields.io/github/last-commit/fauskanger/mypolr.svg                           |
 |              |    :align: left                                                                                      |
@@ -97,11 +102,16 @@ PyPI:
 |              |    :align: left                                                                                      |
 |              |    :alt: Travis CI build and test status                                                             |
 |              |    :target: https://travis-ci.org/fauskanger/mypolr                                                  |
-|              |                                                                                                      |
+|              +------------------------------------------------------------------------------------------------------+
 |              | .. image:: https://img.shields.io/pypi/wheel/mypolr.svg                                              |
 |              |    :align: left                                                                                      |
 |              |    :alt: Wheel support                                                                               |
 |              |    :target: pypi_                                                                                    |
+|              |                                                                                                      |
+|              | .. image:: https://www.versioneye.com/user/projects/5a3304300fb24f5ca527e829/badge.svg?style=flat    |
+|              |    :align: left                                                                                      |
+|              |    :alt: VersionEye dependency watch                                                                 |
+|              |    :target: https://www.versioneye.com/user/projects/5a3304300fb24f5ca527e829                        |
 +--------------+------------------------------------------------------------------------------------------------------+
 
 
