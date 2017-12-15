@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import argparse
 from pprint import pprint
 from pathlib import Path
