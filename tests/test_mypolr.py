@@ -1,9 +1,12 @@
 import requests
 import responses
 import pytest
+import sys
 
 from mypolr import PolrApi, DEFAULT_API_ROOT, exceptions as polr_errors
-from mypolr.__main__ import get_args as _get_args
+
+
+is_old = sys.version_info.major < 3 or sys.version_info.major == 3 and sys.version_info.minor <= 3
 
 
 class ResponseErrorMap:
@@ -196,12 +199,14 @@ class TestLookup:
         rmap.make_error_tests(api.lookup, short_url, url_key='a_secret')
 
 
-def to_args(s):
-    return _get_args(s.split())
-
-
 class TestCliArgs:
     def test_parser(self):
+        if is_old:
+            # Skip tests for old versions for which CLI usage is not supported
+            return
+
+        from mypolr.__main__ import get_args as _get_args
+
         none_kws = 'url server key custom'.split()
         bool_kws = 'version secret lookup save clear'.split()
         flags_true = ['--{}'.format(kw) for kw in bool_kws]
