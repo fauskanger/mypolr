@@ -211,7 +211,7 @@ The :any:`PolrApi.lookup_no_raise`-method still returns ``False`` when no url is
 CLI usage
 =========
 
-CLI-support was added in version 1.3.
+CLI-support was added in *version 1.3* and is supported for Python >= 3.4.
 
 Examples
 --------
