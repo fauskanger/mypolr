@@ -13,7 +13,7 @@ Overview
 .. _conda: https://anaconda.org/fauskanger/mypolr
 
 This package, `mypolr`, is a python package to easily create and manage short links using the
-`Polr Project <https://polrproject.org>`_'s REST
+`Polr Project <https://docs.polrproject.org>`_'s REST
 `API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_. Mypolr also has CLI support.
 
 User Guide and documentation:
@@ -122,7 +122,7 @@ Polr Project
 ------------
 
 Documentation:
-    https://polrproject.org
+    https://docs.polrproject.org
 
 To use `mypolr`, you need a valid API key to a server with the Polr Project installed.
 
