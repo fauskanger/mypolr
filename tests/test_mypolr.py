@@ -205,7 +205,7 @@ class TestCliArgs:
             # Skip tests for old versions for which CLI usage is not supported
             return
 
-        from mypolr.__main__ import get_args as _get_args
+        from mypolr.cli import get_args as _get_args
 
         none_kws = 'url server key custom'.split()
         bool_kws = 'version secret lookup save clear'.split()

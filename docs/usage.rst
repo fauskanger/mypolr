@@ -249,6 +249,6 @@ CLI description
 ---------------
 
 .. argparse::
-   :module: mypolr.__main__
+   :module: mypolr.cli
    :func: make_argparser
    :prog: mypolr
