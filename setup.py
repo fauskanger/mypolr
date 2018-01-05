@@ -28,7 +28,7 @@ setup(
     license='MIT',
     author='Thomas Fauskanger',
     author_email='',
-    keywords='polr project shorturl api',
+    keywords='"polr project" shorturl api',
     description=short_description,
     long_description=long_description,
     install_requires=['requests'],
