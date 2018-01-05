@@ -25,10 +25,15 @@ setup(
     name='mypolr',
     packages=['mypolr'],
     url='https://github.com/fauskanger/mypolr',
+    download_url='https://pypi.org/project/mypolr/#files',
+    project_urls={
+        'Documentation': 'https://mypolr.readthedocs.io',
+        'User Guide': 'https://mypolr.readthedocs.io/en/latest/usage.html#advanced-usage'
+    },
     license='MIT',
     author='Thomas Fauskanger',
     author_email='',
-    keywords='"polr project" shorturl api',
+    keywords='polr-project shorturl api',
     description=short_description,
     long_description=long_description,
     install_requires=['requests'],
@@ -49,7 +54,8 @@ setup(
         'Topic :: Software Development',
         'Topic :: Utilities'
     ],
-
+    # include all files in MANIFEST.in in source distributions (i.e. LICENSE)
+    include_package_data=True,
     # Obtains version from git tags with setuptools_scm
     use_scm_version=True,
     setup_requires=['setuptools_scm'] + pytest_runner,
