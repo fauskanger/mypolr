@@ -201,7 +201,7 @@ class TestCliArgs:
     def test_parser(self):
         from mypolr import is_cli_supported
 
-        if is_cli_supported:
+        if not is_cli_supported:
             # Skip tests for old versions for which CLI usage is not supported
             return
 
