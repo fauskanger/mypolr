@@ -1,3 +1,6 @@
+"""
+This file defines the main component of the Mypolr package: the :class:`PolrApi` class.
+"""
 import requests
 
 from mypolr import exceptions

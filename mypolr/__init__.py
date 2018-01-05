@@ -1,3 +1,22 @@
+"""
+This package, `mypolr <https://github.com/fauskanger/mypolr>`_, is a python package to
+easily create and manage short links using the
+`Polr Project <https://docs.polrproject.org>`_'s REST
+`API <https://docs.polrproject.org/en/latest/developer-guide/api/>`_. Mypolr also has CLI support.
+
+Main components are:
+
+- :class:`PolrApi` class in `mypolr/polr_api.py`
+- :class:`MypolrError`-based exceptions in `mypolr/exceptions.py`
+- :class:`MypolrCli` class in `mypolr/__main__.py` for practical CLI usage
+
+Tests are located in `mypolr/tests/`.
+
+Licensed under
+`MIT License <https://github.com/fauskanger/mypolr/blob/master/LICENSE>`_.
+See also the `LICENSE`-file in root folder.
+
+"""
 from pkg_resources import get_distribution, DistributionNotFound
 
 from mypolr import exceptions

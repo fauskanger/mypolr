@@ -1,3 +1,6 @@
+"""
+All Mypolr exceptions are inherited from :class:`MypolrError` and are defined in this file.
+"""
 from functools import wraps
 
 

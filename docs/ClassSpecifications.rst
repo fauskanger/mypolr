@@ -27,7 +27,7 @@ Testing
 Use tox with conda
 ------------------
 
-See also: :ref:`fix_conda_tox`.
+See: :ref:`fix_conda_tox`.
 
 .. automodule:: tox_with_conda
    :members:
