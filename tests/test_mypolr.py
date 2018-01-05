@@ -6,8 +6,6 @@ import sys
 from mypolr import PolrApi, DEFAULT_API_ROOT, exceptions as polr_errors
 
 
-is_old = sys.version_info.major < 3 or sys.version_info.major == 3 and sys.version_info.minor <= 3
-
 
 class ResponseErrorMap:
     """Maps sets of ``responses.add()``-arguments to expected exceptions.
@@ -201,7 +199,9 @@ class TestLookup:
 
 class TestCliArgs:
     def test_parser(self):
-        if is_old:
+        from mypolr import is_cli_supported
+
+        if is_cli_supported:
             # Skip tests for old versions for which CLI usage is not supported
             return
 

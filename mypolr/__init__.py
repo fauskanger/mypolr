@@ -17,6 +17,7 @@ Licensed under
 See also the `LICENSE`-file in root folder.
 
 """
+import sys
 from pkg_resources import get_distribution, DistributionNotFound
 
 from mypolr import exceptions
@@ -27,3 +28,6 @@ try:
 except DistributionNotFound:
     # package is not installed
     pass
+
+# Determines whether CLI-tests should run, and if CLI-usage is allowed
+is_cli_supported = sys.version_info.major == 3 and sys.version_info.minor >= 3
