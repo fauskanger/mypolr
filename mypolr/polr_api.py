@@ -75,7 +75,7 @@ class PolrApi:
 
     def shorten(self, long_url, custom_ending=None, is_secret=False):
         """
-        Creates a short url if valid, else returns None
+        Creates a short url if valid
 
         :param str long_url: The url to shorten.
         :param custom_ending: The custom url to create if available.
