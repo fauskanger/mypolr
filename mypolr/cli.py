@@ -105,7 +105,7 @@ class MypolrCli:
 
     def make_ini_getter(self):
         config = ConfigParser()
-        config.read(self.config_file)
+        config.read(str(self.config_file))
 
         def get_ini_value(field, fallback=None):
             return config.get(self.ini_header, field, fallback=fallback)
