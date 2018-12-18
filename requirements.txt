@@ -13,6 +13,6 @@ sphinx-argparse
 sphinx_rtd_theme==0.2.4
 tox
 unittest2==1.1.0
-urllib3==1
+urllib3>=1.23
 virtualenv==15.1.0
 wheel==0.30.0
