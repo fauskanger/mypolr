@@ -87,7 +87,7 @@ class PolrApi:
         params = {
             'url': long_url,
             'is_secret': 'true' if is_secret else 'false',
-            'custom_encoding': custom_ending
+            'custom_ending': custom_ending
         }
         data, r = self._make_request(self.api_shorten_endpoint, params)
         if r.status_code == 400:
